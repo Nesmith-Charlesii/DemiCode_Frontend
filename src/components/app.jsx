@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Switch, Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './app.css';
 //import axios from 'axios';
 import NavBar from './NavBar/navbar';
 
@@ -12,8 +13,13 @@ class App extends Component {
 
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid p-0">
                 <NavBar/>
+                <Switch>
+                    <Route path="/login">
+                        
+                    </Route>
+                </Switch>
             </div>
         )
     }

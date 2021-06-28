@@ -1,0 +1,28 @@
+.nav-container {
+    height: 50px;
+    border-bottom: 1px solid rgb(0,0,0);
+    box-shadow: 0px 2px 10px rgb(100,100,100);
+}
+
+.nav {
+    padding: 0;
+    height: 100%;
+}
+
+.nav ul {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav ul li {
+    list-style: none;
+}
+
+.nav ul a {
+    text-decoration: none;
+    text-align: center;
+}
+
