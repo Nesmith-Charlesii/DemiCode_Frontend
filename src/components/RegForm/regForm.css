@@ -1,0 +1,18 @@
+.regForm-container {
+    display: flex;
+    justify-content: center;
+}
+
+.regForm-container form {
+    width: 500px;
+    
+}
+
+.regForm-container form label {
+    padding-bottom: 10px;
+}
+
+.regForm-container form input {
+    margin-bottom: 10px;
+}
+

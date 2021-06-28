@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 //import axios from 'axios';
 import NavBar from './NavBar/navbar';
+import RegForm from './RegForm/regForm';
+
 
 class App extends Component {
     constructor(props) {
@@ -16,8 +18,8 @@ class App extends Component {
             <div className="container-fluid p-0">
                 <NavBar/>
                 <Switch>
-                    <Route path="/login">
-                        
+                    <Route path="/register">
+                        <RegForm />
                     </Route>
                 </Switch>
             </div>
