@@ -1,0 +1,18 @@
+.blogForm-container {
+    display: flex;
+    justify-content: center;
+}
+
+.blogForm-container form {
+    width: 500px;
+    
+}
+
+.blogForm-container form label {
+    padding-bottom: 10px;
+}
+
+.blogForm-container form input {
+    margin-bottom: 10px;
+}
+

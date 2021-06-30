@@ -1,0 +1,18 @@
+.loginForm-container {
+    display: flex;
+    justify-content: center;
+}
+
+.loginForm-container form {
+    width: 500px;
+    
+}
+
+.loginForm-container form label {
+    padding-bottom: 10px;
+}
+
+.loginForm-container form input {
+    margin-bottom: 10px;
+}
+
