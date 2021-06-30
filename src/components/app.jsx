@@ -24,7 +24,7 @@ class App extends Component {
         if(this.state.logged_in) {
             try {
                 const user = jwtDecode(jwt)
-                this.setState({username: user})
+                console.log(user)
                 // let {data} = axios.get(`http://127.0.0.1:8000/api/current_user/`, {
                 //     headers: {
                 //         Authorization: `JWT ${localStorage.getItem('token')}`
@@ -53,7 +53,7 @@ class App extends Component {
     }
 
     Login = async(user) => {
-        console.log(user)
+        console.log('USER LOGIN API', user)
         try {
             let {data} = await axios.post(`http://127.0.0.1:8000/api/token-auth/`, user)
             console.log('USER DATA', data);
@@ -63,24 +63,14 @@ class App extends Component {
                 logged_in: true,
                 username: data.user.username
             })
+            console.log(`hello ${this.state.username}`)
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
         }
     }
 
-    blogSubmittal = async(blog) => {
-        try {
-            let token = localStorage.getItem('token');
-            let config = {headers: { Authorization: `Bearer ${token}` }};
-            let {data} = await axios.post(`http://127.0.0.1:8000/api/blog_content/`, blog, config);
-            console.log('BLOG DATA', data)
-        }
-        catch(error) {
-            alert(`Whoops! ${error} Looks like we're having some technical difficulties. Try again later`)
-        }
-    }
-
+    
     handle_logout = () => {
         localStorage.removeItem('token');
         this.setState({ logged_in: false, username: '' } , () => console.log(this.state.logged_in, this.state.username, localStorage.getItem('token')));
@@ -89,7 +79,7 @@ class App extends Component {
     render() {
         return (
             <div className="container-fluid p-0">
-                <Nav logged_in={this.state.logged_in} Logout={this.handle_logout} />
+                <Nav logged_in={this.state.logged_in} Logout={this.handle_logout} username={this.state.username} />
                 <Switch>
                     <Route path="/register">
                         <RegForm Register={(newbie) => this.Register(newbie)}/>
@@ -98,7 +88,7 @@ class App extends Component {
                         <LoginForm Login={(user) => this.Login(user)}/>
                     </Route>
                     <Route path="/articles">
-                        <BlogForm blogSubmittal ={(blog) => this.blogSubmittal(blog)} />
+                        <BlogForm  />
                     </Route>
                 </Switch>
             </div>

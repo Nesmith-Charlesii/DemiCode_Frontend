@@ -82,7 +82,7 @@ const Nav = (props) => {
                 </div>
                 <ul>
                     <Link to='/profile'>
-                        <li><i className="fas fa-user" id="profile"></i></li>
+                        <li><p>Hello {props.username}</p></li>
                     </Link>
                     <li><i className="fas fa-sign-out-alt" id="logout-icon" onClick={props.Logout} ></i></li>
                 </ul>
