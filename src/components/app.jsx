@@ -59,10 +59,10 @@ class App extends Component {
             console.log('USER DATA', data);
             localStorage.setItem('token', data.token);
             console.log('THIS IS THE TOKEN', data.token)
-            // this.setState({
-            //     logged_in: true,
-            //     username: data.user.username
-            // })
+            this.setState({
+                logged_in: true,
+                username: data.user.username
+            })
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
@@ -83,22 +83,21 @@ class App extends Component {
 
     handle_logout = () => {
         localStorage.removeItem('token');
-        this.setState({ logged_in: false, username: '' });
-        console.log(this.state.logged_in, this.state.username, localStorage.getItem('token'))
+        this.setState({ logged_in: false, username: '' } , () => console.log(this.state.logged_in, this.state.username, localStorage.getItem('token')));
     };
 
     render() {
         return (
             <div className="container-fluid p-0">
-                <Nav logged_in={this.state.logged_in}/>
+                <Nav logged_in={this.state.logged_in} Logout={this.handle_logout} />
                 <Switch>
                     <Route path="/register">
                         <RegForm Register={(newbie) => this.Register(newbie)}/>
                     </Route>
                     <Route path="/login">
-                        <LoginForm Login={(user) => this.Login(user)} Logout={()=> this.handle_logout()}/>
+                        <LoginForm Login={(user) => this.Login(user)}/>
                     </Route>
-                    <Route path="/blog">
+                    <Route path="/articles">
                         <BlogForm blogSubmittal ={(blog) => this.blogSubmittal(blog)} />
                     </Route>
                 </Switch>

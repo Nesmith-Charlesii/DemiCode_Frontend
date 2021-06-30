@@ -29,7 +29,6 @@ const LoginForm = (props) => {
                     <button className="confirmReg">Login</button>
                 </div>
             </form>
-            <button onClick={props.Logout}></button>
         </div>
     )
 }

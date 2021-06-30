@@ -81,9 +81,10 @@ const Nav = (props) => {
                     </form>
                 </div>
                 <ul>
-                    <Link to='/logout'>
-                        <li><i className="fas fa-sign-out-alt" id="logout-icon"></i></li>
+                    <Link to='/profile'>
+                        <li><i className="fas fa-user" id="profile"></i></li>
                     </Link>
+                    <li><i className="fas fa-sign-out-alt" id="logout-icon" onClick={props.Logout} ></i></li>
                 </ul>
             </div>
         </div>
