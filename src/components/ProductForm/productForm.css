@@ -1,0 +1,18 @@
+.productForm-container {
+    display: flex;
+    justify-content: center;
+}
+
+.productForm-container form {
+    width: 500px;
+    
+}
+
+.productForm-container form label {
+    padding-bottom: 10px;
+}
+
+.productForm-container form input {
+    margin-bottom: 10px;
+}
+

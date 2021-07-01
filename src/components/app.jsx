@@ -8,6 +8,7 @@ import Nav from './NavBar/navbar';
 import RegForm from './RegForm/regForm';
 import LoginForm from './LoginForm/loginForm';
 import BlogForm from './BlogForm/blogForm';
+import ProductForm from './ProductForm/productForm';
 
 
 class App extends Component {
@@ -89,6 +90,9 @@ class App extends Component {
                     </Route>
                     <Route path="/articles">
                         <BlogForm  />
+                    </Route>
+                    <Route path="/products">
+                        <ProductForm  />
                     </Route>
                 </Switch>
             </div>
