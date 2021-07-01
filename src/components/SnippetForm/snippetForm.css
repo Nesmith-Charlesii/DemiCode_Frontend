@@ -1,0 +1,18 @@
+.snippetForm-container {
+    display: flex;
+    justify-content: center;
+}
+
+.snippetForm-container form {
+    width: 500px;
+    
+}
+
+.snippetForm-container form label {
+    padding-bottom: 10px;
+}
+
+.snippetForm-container form input {
+    margin-bottom: 10px;
+}
+

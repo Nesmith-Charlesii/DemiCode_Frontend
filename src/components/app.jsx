@@ -9,6 +9,8 @@ import RegForm from './RegForm/regForm';
 import LoginForm from './LoginForm/loginForm';
 import BlogForm from './BlogForm/blogForm';
 import ProductForm from './ProductForm/productForm';
+import SnippetForm from './SnippetForm/snippetForm';
+import VideoForm from './VideoForm/videoForm';
 
 
 class App extends Component {
@@ -26,13 +28,7 @@ class App extends Component {
             try {
                 const user = jwtDecode(jwt)
                 console.log(user)
-                // let {data} = axios.get(`http://127.0.0.1:8000/api/current_user/`, {
-                //     headers: {
-                //         Authorization: `JWT ${localStorage.getItem('token')}`
-                //     }
-                // })
-                console.log(this.state.logged_in)
-                // this.setState({username: data.username})
+                console.log(`User: ${user.username}\nLogged_In: ${this.state.logged_in}`)
             }
             catch(error) {
                 console.log(error)
@@ -82,18 +78,12 @@ class App extends Component {
             <div className="container-fluid p-0">
                 <Nav logged_in={this.state.logged_in} Logout={this.handle_logout} username={this.state.username} />
                 <Switch>
-                    <Route path="/register">
-                        <RegForm Register={(newbie) => this.Register(newbie)}/>
-                    </Route>
-                    <Route path="/login">
-                        <LoginForm Login={(user) => this.Login(user)}/>
-                    </Route>
-                    <Route path="/articles">
-                        <BlogForm  />
-                    </Route>
-                    <Route path="/products">
-                        <ProductForm  />
-                    </Route>
+                    <Route path="/register" render={props => <RegForm {...props} Register={newbie => this.Register(newbie)}/>}/>
+                    <Route path="/login" render={props => <LoginForm {...props} Login={user => this.Login(user)}/>}/>
+                    <Route path="/articles" render={props => <BlogForm {...props} />}/>
+                    <Route path="/products" render={props => <ProductForm {...props}/>}/>
+                    <Route path="/snippets" render={props => <SnippetForm {...props} />}/>
+                    <Route path="/videos" render={props => <VideoForm {...props} />}/>
                 </Switch>
             </div>
         )

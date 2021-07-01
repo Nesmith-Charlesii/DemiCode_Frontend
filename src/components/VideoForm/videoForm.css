@@ -1,0 +1,18 @@
+.videoForm-container {
+    display: flex;
+    justify-content: center;
+}
+
+.videoForm-container form {
+    width: 500px;
+    
+}
+
+.videoForm-container form label {
+    padding-bottom: 10px;
+}
+
+.videoForm-container form input {
+    margin-bottom: 10px;
+}
+
