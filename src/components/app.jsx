@@ -67,6 +67,16 @@ class App extends Component {
         }
     }
 
+    Contributors = async() => {
+        try {
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/users`)
+            console.log(data)
+        }
+        catch(error) {
+
+        }
+    }
+
     
     handle_logout = () => {
         localStorage.removeItem('token');
