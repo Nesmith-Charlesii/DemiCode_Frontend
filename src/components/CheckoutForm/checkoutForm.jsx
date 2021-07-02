@@ -1,6 +1,6 @@
 import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import React, {useState} from "react";
-// import ApiService from "../api";
+import ApiService from '../ApiService/apiService';
 
 const CheckoutForm = () => {
     const [error, setError] = useState(null);
@@ -26,7 +26,17 @@ const CheckoutForm = () => {
             card: card
         });
         console.log(paymentMethod, error)
+
+        ApiService.saveStripeInfo({
+            email, payment_method_id: paymentMethod.id})
+            .then(response => {
+            console.log(response.data);
+            }).catch(error => {
+            console.log(error)
+            })
+    
     };
+
 
     return (
         <form onSubmit={handleSubmit} className="stripe-form">
