@@ -11,7 +11,7 @@ import BlogForm from './BlogForm/blogForm';
 import ProductForm from './ProductForm/productForm';
 import SnippetForm from './SnippetForm/snippetForm';
 import VideoForm from './VideoForm/videoForm';
-import Checkout from './stripeAPI';
+import Checkout from './Checkout/stripeAPI';
 
 
 class App extends Component {
