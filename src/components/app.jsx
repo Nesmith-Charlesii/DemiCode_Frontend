@@ -11,6 +11,7 @@ import BlogForm from './BlogForm/blogForm';
 import ProductForm from './ProductForm/productForm';
 import SnippetForm from './SnippetForm/snippetForm';
 import VideoForm from './VideoForm/videoForm';
+import Checkout from './stripeAPI';
 
 
 class App extends Component {
@@ -94,6 +95,7 @@ class App extends Component {
                     <Route path="/products" render={props => <ProductForm {...props}/>}/>
                     <Route path="/snippets" render={props => <SnippetForm {...props} />}/>
                     <Route path="/videos" render={props => <VideoForm {...props} />}/>
+                    <Route path="/checkout" render={props => <Checkout {...props} />}/>
                 </Switch>
             </div>
         )
