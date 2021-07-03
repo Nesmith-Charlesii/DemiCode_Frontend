@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 .nav-container {
+    width: 100%;
     height: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    /* background-image: linear-gradient(to bottom, rgb(28, 255, 255), rgb(255, 255, 255)); */
+    position: fixed;
+    z-index: 1;
 }
 
 .logo {
@@ -24,8 +26,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-
+    justify-content: space-around;
 }
 
 .nav-content ul li {
@@ -33,11 +34,10 @@
 }
 
 .nav-content ul a {
-    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-family: Helvetica;
     font-weight:bolder;
-    /* text-shadow: 2px 4px 2px rgb(41, 30, 30); */
     letter-spacing: 2px;
-    color: rgb(0, 0, 0);
+    color: white;
     text-decoration: none;
     text-align: center;
 }
@@ -60,12 +60,17 @@
 
 .search-form .form-group input {
     width: 14vw;
+    color: white;
+}
+
+.search-form .form-group input:focus {
+    outline: none;
 }
 
 .search-form .form-group input[type=text] {
     background: transparent;
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(190, 190, 190);
 }
 
 #search-button {
@@ -73,12 +78,16 @@
     justify-content: center;
     align-items: center;
     border: none;
-    border-radius: 50%;
     height: 30px;
     width: 30px;
     margin-left: 10px;
-    background-image: linear-gradient(rgb(253, 253, 253), rgb(20, 24, 250));
     color: rgb(8, 8, 8);
+    background-color: transparent;
+}
+
+#search-button:hover {
+    border-radius: 50%;
+    background-color: thistle;
 }
 
 .nav-common ul {

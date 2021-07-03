@@ -20,6 +20,7 @@ class App extends Component {
         this.state = {
             username: "",
             logged_in: localStorage.getItem('token') ? true : false
+            
         }
     }
 

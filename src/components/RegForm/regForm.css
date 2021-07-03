@@ -1,18 +1,84 @@
-.regForm-container {
+.reg-container {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reg-form-greeting {
     display: flex;
     justify-content: center;
+    align-items: center;
+    background: url('/src/assets/bubbles.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 50vw;
 }
 
-.regForm-container form {
+.reg-form-container {
+    background-color: rgb(89, 69, 135);
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reg-form-container form {
     width: 500px;
-    
 }
 
-.regForm-container form label {
+.reg-form-container form label {
     padding-bottom: 10px;
 }
 
-.regForm-container form input {
-    margin-bottom: 10px;
+.reg-form-container form input {
+    width: 100%;
+    margin-bottom: 45px;
+    color: white;
 }
 
+.reg-form-container form input:focus {
+    outline: none;
+}
+
+.reg-form-container .form-group input[type=text] {
+    background: transparent;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 2px solid rgb(190, 190, 190);
+}
+
+.reg-form-container .form-group input[type=email] {
+    background: transparent;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 2px solid rgb(190, 190, 190);
+}
+
+.reg-form-container .form-group input[type=password] {
+    background: transparent;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 2px solid rgb(190, 190, 190);
+}
+
+.reg-form-container .form-group input::placeholder {
+    color: rgb(177, 177, 177);
+}
+
+.confirmReg {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    border: transparent;
+    height: 35px;
+    box-shadow: 2px 4px 5px rgb(30, 30, 30);
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: rgb(204, 167, 246);
+    color: black;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.confirmReg:hover {
+    background-color: rgb(213, 187, 240);;
+}

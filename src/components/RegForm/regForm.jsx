@@ -26,25 +26,30 @@ const RegForm = (props) => {
     const {handleChange, handleSubmit, inputs} = CustomForm(Submittal)
 
     return (
-        <div className="regForm-container my-5">
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="firstName">First Name:</label>
-                    <input className="form-control" type="text" name="firstName" onChange={handleChange} value={inputs.firstName}/>
-                    <label htmlFor="lastName">Last Name:</label>
-                    <input className="form-control" type="text" name="lastName" onChange={handleChange} value={inputs.lastName}/>
-                    <label htmlFor="username">Username:</label>
-                    <input className="form-control" type="text" name="username" onChange={handleChange} value={inputs.username}/>
-                    <label htmlFor="email">Email:</label>
-                    <input className="form-control" type="email" name="email" onChange={handleChange} value={inputs.email}/>
-                    <label htmlFor="password">Password:</label>
-                    <input className="form-control" type="password" name="password" onChange={handleChange} value={inputs.password}/>
-                    <label htmlFor="confirmPW">Confirm Password:</label>
-                    <input className="form-control" type="password" name="confirmPW" onChange={handleChange} value={inputs.confirmPW}/>
-                    <br/>
-                    <button className="confirmReg">Sign Up!</button>
-                </div>
-            </form>
+        <div className="reg-container" id="reg-wrapper">
+            <div className="reg-form-greeting">
+                <h1>TEXT</h1>
+            </div>
+            <div className="reg-form-container">
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        {/* <label htmlFor="firstName">First Name:</label> */}
+                        <input type="text" name="firstName" onChange={handleChange} value={inputs.firstName} placeholder="first name"/>
+                        {/* <label htmlFor="lastName">Last Name:</label> */}
+                        <input type="text" name="lastName" onChange={handleChange} value={inputs.lastName} placeholder="last name"/>
+                        {/* <label htmlFor="username">Username:</label> */}
+                        <input type="text" name="username" onChange={handleChange} value={inputs.username} placeholder="username"/>
+                        {/* <label htmlFor="email">Email:</label> */}
+                        <input type="email" name="email" onChange={handleChange} value={inputs.email} placeholder="email"/>
+                        {/* <label htmlFor="password">Password:</label> */}
+                        <input type="password" name="password" onChange={handleChange} value={inputs.password} placeholder="password"/>
+                        {/* <label htmlFor="confirmPW">Confirm Password:</label> */}
+                        <input type="password" name="confirmPW" onChange={handleChange} value={inputs.confirmPW} placeholder="confirm password"/>
+                        <br/>
+                        <button className="confirmReg">Sign Up! <i class="fas fa-arrow-right mx-2"></i></button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

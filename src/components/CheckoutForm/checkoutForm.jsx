@@ -21,11 +21,11 @@ const CheckoutForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const card = elements.getElement(CardElement);
-        const {paymentMethod, error} = await stripe.createPaymentMethod({
+        const {paymentMethod} = await stripe.createPaymentMethod({
             type: 'card',
             card: card
         });
-        console.log(paymentMethod, error)
+        // console.log(paymentMethod, error)
 
         ApiService.saveStripeInfo({
             email, payment_method_id: paymentMethod.id})
@@ -46,7 +46,7 @@ const CheckoutForm = () => {
                 value={email} onChange={(event) => { setEmail(event.target.value)}} />
             </div>
             <div className="form-row">
-                <label for="card-element">Credit or debit card</label> 
+                <label htmlFor="card-element">Credit or debit card</label> 
                 <CardElement id="card-element" onChange={handleChange}/>
                 <div className="card-errors" role="alert">{error}</div>
             </div>
