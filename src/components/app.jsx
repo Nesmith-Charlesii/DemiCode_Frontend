@@ -139,7 +139,7 @@ class App extends Component {
             <div className="container-fluid p-0">
                 <Nav logged_in={this.state.logged_in} Logout={this.handle_logout} username={this.state.username} />
                 <Switch>
-                    <Route path="/home" render={props => <Home {...props} articles={this.state.articles} snippets={this.state.snippets} videos={this.state.videos} products={this.state.products}/>}/>
+                    <Route path="/home" render={props => <Home {...props} articleHeaders={this.state.articles} snippets={this.state.snippets} videos={this.state.videos} products={this.state.products}/>}/>
                     <Route path="/register" render={props => <RegForm {...props} Register={newbie => this.Register(newbie)}/>}/>
                     <Route path="/login" render={props => <LoginForm {...props} Login={user => this.Login(user)}/>}/>
                     <Route path="/articles" render={props => <BlogForm {...props} blogSubmittal={(blog) => {this.blogSubmittal(blog)}} />}/>

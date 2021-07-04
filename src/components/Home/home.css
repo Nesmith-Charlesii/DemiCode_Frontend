@@ -5,3 +5,11 @@
     justify-content: center;
     align-items: center;
 }
+
+.card-content {
+    border: none;
+    background: url('/src/assets/soundpurp.jpg');
+    background-size: cover;
+    height: 10vh;
+    width: 25vw;
+}
