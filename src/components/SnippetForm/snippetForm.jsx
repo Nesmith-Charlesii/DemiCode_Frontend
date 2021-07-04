@@ -16,15 +16,15 @@ const SnippetForm = (props) => {
         snippetSubmittal(snippet)
     }
 
-    const {handleChange, handleSubmit, inputs} = CustomForm(Submittal)
+    const {handleChange, handleFileChange, handleSubmit, inputs} = CustomForm(Submittal)
 
     const snippetSubmittal = async(snippet) => {
-        console.log('snippet submit token', localStorage.getItem('token'))
+        console.log('SNIPPET', snippet)
         try {
             let token = localStorage.getItem('token');
-            let config = {headers: { Authorization: `JWT ${token}` }};
-            let {data} = await axios.post(`http://127.0.0.1:8000/api/code_snippets/`, snippet, config);
-            console.log('PRODUCT DATA', data)
+            let config = {headers: { Authorization: `JWT ${token}`}};
+            let {data} = await axios.post(`http://127.0.0.1:8000/api/code_snippets_creator/`, snippet, config);
+            console.log('SNIPPET DATA', data)
         }
         catch(error) {
             alert(`Whoops! ${error} Looks like we're having some technical difficulties. Try again later`)
@@ -41,7 +41,7 @@ const SnippetForm = (props) => {
                     <label htmlFor="text">Snippet Text:</label>
                     <textarea className="form-control" type="text" name="text" onChange={handleChange} value={inputs.text}/>
                     <label htmlFor="upload">Snippet Upload:</label>
-                    <input className="form-control" type="text" name="upload" onChange={handleChange} value={inputs.upload}/>
+                    <input className="form-control" type="file" accept="image/*" name="upload" onChange={handleFileChange} value={inputs.upload}/>
                     <br/>
                     <button className="confirmReg">Confirm</button>
                 </div>

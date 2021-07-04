@@ -20,7 +20,7 @@ const BlogForm = (props) => {
         try {
             let token = localStorage.getItem('token');
             let config = {headers: { Authorization: `JWT ${token}` }};
-            let {data} = await axios.post(`http://127.0.0.1:8000/api/blog_content/`, blog, config);
+            let {data} = await axios.post(`http://127.0.0.1:8000/api/blog_content_creator/`, blog, config);
             console.log('BLOG DATA', data)
         }
         catch(error) {

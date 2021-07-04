@@ -22,7 +22,9 @@ class App extends Component {
             username: "",
             logged_in: localStorage.getItem('token') ? true : false,
             articles: [],
-            words: ['yo', 'yo' , 'yo', 'yo']
+            snippets: [],
+            videos: [],
+            products: []
         }
     }
 
@@ -83,6 +85,39 @@ class App extends Component {
         }
     }
 
+    allSnippets = async() => {
+        try {
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/code_snippets/all`);
+            console.log(data)
+            this.setState({snippets: data}, () => console.log('ALL SNIPPETS', this.state.snippets))
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
+    allVideos = async() => {
+        try {
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/videos/all`);
+            console.log(data)
+            this.setState({videos: data}, () => console.log('ALL VIDEOS', this.state.videos))
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
+    allProducts = async() => {
+        try {
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/digital_products/all`);
+            console.log(data)
+            this.setState({products: data}, () => console.log('ALL PRODUCTS', this.state.products))
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
     Contributors = async() => {
         try {
             let {data} = await axios.get(`http://127.0.0.1:8000/api/users`)
@@ -104,7 +139,7 @@ class App extends Component {
             <div className="container-fluid p-0">
                 <Nav logged_in={this.state.logged_in} Logout={this.handle_logout} username={this.state.username} />
                 <Switch>
-                    <Route path="/home" render={props => <Home {...props} articles={this.state.articles} allBlogs={() => this.allBlogs()} />}/>
+                    <Route path="/home" render={props => <Home {...props} articles={this.state.articles} snippets={this.state.snippets} videos={this.state.videos} products={this.state.products}/>}/>
                     <Route path="/register" render={props => <RegForm {...props} Register={newbie => this.Register(newbie)}/>}/>
                     <Route path="/login" render={props => <LoginForm {...props} Login={user => this.Login(user)}/>}/>
                     <Route path="/articles" render={props => <BlogForm {...props} blogSubmittal={(blog) => {this.blogSubmittal(blog)}} />}/>
