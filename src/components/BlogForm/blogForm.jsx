@@ -15,8 +15,6 @@ const BlogForm = (props) => {
         blogSubmittal(blog)
     }
 
-    const {handleChange, handleSubmit, inputs} = CustomForm(Submittal)
-
     const blogSubmittal = async(blog) => {
         console.log('Blog submit token', localStorage.getItem('token'))
         try {
@@ -30,6 +28,7 @@ const BlogForm = (props) => {
         }
     }
 
+    const {handleChange, handleSubmit, inputs} = CustomForm(Submittal)
 
     return (
         <div className="blogForm-container my-5">

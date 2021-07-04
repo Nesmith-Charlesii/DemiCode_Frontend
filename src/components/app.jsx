@@ -12,6 +12,7 @@ import ProductForm from './ProductForm/productForm';
 import SnippetForm from './SnippetForm/snippetForm';
 import VideoForm from './VideoForm/videoForm';
 import Checkout from './Checkout/stripeAPI';
+import Home from './Home/home';
 
 
 class App extends Component {
@@ -19,8 +20,9 @@ class App extends Component {
         super(props);
         this.state = {
             username: "",
-            logged_in: localStorage.getItem('token') ? true : false
-            
+            logged_in: localStorage.getItem('token') ? true : false,
+            articles: [],
+            words: ['yo', 'yo' , 'yo', 'yo']
         }
     }
 
@@ -36,6 +38,7 @@ class App extends Component {
                 console.log(error)
             }
         }
+        this.allBlogs()
     }
 
     Register = async(newbie) => {
@@ -69,6 +72,17 @@ class App extends Component {
         }
     }
 
+    allBlogs = async() => {
+        try {
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/blog_content/all`);
+            console.log(data)
+            this.setState({articles: data}, () => console.log('ALLBLOGS', this.state.articles))
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
     Contributors = async() => {
         try {
             let {data} = await axios.get(`http://127.0.0.1:8000/api/users`)
@@ -90,9 +104,10 @@ class App extends Component {
             <div className="container-fluid p-0">
                 <Nav logged_in={this.state.logged_in} Logout={this.handle_logout} username={this.state.username} />
                 <Switch>
+                    <Route path="/home" render={props => <Home {...props} articles={this.state.articles} allBlogs={() => this.allBlogs()} />}/>
                     <Route path="/register" render={props => <RegForm {...props} Register={newbie => this.Register(newbie)}/>}/>
                     <Route path="/login" render={props => <LoginForm {...props} Login={user => this.Login(user)}/>}/>
-                    <Route path="/articles" render={props => <BlogForm {...props} />}/>
+                    <Route path="/articles" render={props => <BlogForm {...props} blogSubmittal={(blog) => {this.blogSubmittal(blog)}} />}/>
                     <Route path="/products" render={props => <ProductForm {...props}/>}/>
                     <Route path="/snippets" render={props => <SnippetForm {...props} />}/>
                     <Route path="/videos" render={props => <VideoForm {...props} />}/>

@@ -28,11 +28,14 @@ const RegForm = (props) => {
     return (
         <div className="reg-container" id="reg-wrapper">
             <div className="reg-form-greeting">
-                <h1>TEXT</h1>
+                <div className="reg-form-context">
+                    
+                </div>
             </div>
             <div className="reg-form-container">
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group">
+                    <h2>Sign Up</h2>
+                    <div className="form-group my-4">
                         {/* <label htmlFor="firstName">First Name:</label> */}
                         <input type="text" name="firstName" onChange={handleChange} value={inputs.firstName} placeholder="first name"/>
                         {/* <label htmlFor="lastName">Last Name:</label> */}
@@ -46,7 +49,7 @@ const RegForm = (props) => {
                         {/* <label htmlFor="confirmPW">Confirm Password:</label> */}
                         <input type="password" name="confirmPW" onChange={handleChange} value={inputs.confirmPW} placeholder="confirm password"/>
                         <br/>
-                        <button className="confirmReg">Sign Up! <i class="fas fa-arrow-right mx-2"></i></button>
+                        <button className="confirmReg">Sign Up! <i className="fas fa-arrow-right mx-2"></i></button>
                     </div>
                 </form>
             </div>

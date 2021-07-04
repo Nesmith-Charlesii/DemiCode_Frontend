@@ -7,7 +7,7 @@ const Nav = (props) => {
     const logged_out_nav = (
         <div className="nav-container">
             <div className="logo">
-                <h4>logo</h4>
+                <h3>LOGO</h3>
             </div>
             <nav className="nav-content">
                 <ul>

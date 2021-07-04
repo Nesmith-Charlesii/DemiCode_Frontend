@@ -18,17 +18,22 @@ const LoginForm = (props) => {
     const {handleChange, handleSubmit, inputs} = CustomForm(Submittal)
 
     return (
-        <div className="loginForm-container my-5">
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="username">Username:</label>
-                    <input className="form-control" type="text" name="username" onChange={handleChange} value={inputs.username}/>
-                    <label htmlFor="password">Password:</label>
-                    <input className="form-control" type="password" name="password" onChange={handleChange} value={inputs.password}/>
-                    <br/>
-                    <button className="confirmReg">Login</button>
-                </div>
-            </form>
+        <div className="login-container" id="login-wrapper">
+            <div className="loginForm-container my-5">
+                <form onSubmit={handleSubmit}>
+                    <h2>Sign in to your account</h2>
+                    <div className="form-group my-5">
+                        <label htmlFor="username">Username:</label>
+                        <input className="form-control" type="text" name="username" onChange={handleChange} value={inputs.username}/>
+                        <label htmlFor="password">Password:</label>
+                        <input className="form-control" type="password" name="password" onChange={handleChange} value={inputs.password}/>
+                        <br/>
+                        <div className="login-button-div my-3">
+                            <button className="confirmLogin">Continue</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
