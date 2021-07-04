@@ -1,8 +1,12 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 const CustomForm = (callback) => {
     const [inputs, setInputs] = useState({});
     const [file, setFile] = useState({});
+
+    useEffect(() => 
+        console.log(file), [file]
+    )
     
     const handleChange = (event) => {
         event.persist();
@@ -11,7 +15,7 @@ const CustomForm = (callback) => {
 
     const handleFileChange = (event) => {
         event.persist();
-        setFile({file: event.target.files[0].name}, () => console.log('FILE CHANGE', file))
+        setFile({file: event.target.files[0].name})
     }
 
     const handleSubmit = (event) => {
@@ -25,7 +29,8 @@ const CustomForm = (callback) => {
         handleChange,
         handleSubmit,
         handleFileChange,
-        inputs
+        inputs,
+        file
     }
 }
 

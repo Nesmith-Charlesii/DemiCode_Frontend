@@ -10,13 +10,13 @@ const SnippetForm = (props) => {
             //Keys must match that of the model from django exactly!
             title: inputs.title,
             text: inputs.text,
-            upload: inputs.upload
+            upload: file.upload
         }
         console.log('Snippet Dict', snippet)
         snippetSubmittal(snippet)
     }
 
-    const {handleChange, handleFileChange, handleSubmit, inputs} = CustomForm(Submittal)
+    const {handleChange, handleFileChange, handleSubmit, inputs, file} = CustomForm(Submittal)
 
     const snippetSubmittal = async(snippet) => {
         console.log('SNIPPET', snippet)
