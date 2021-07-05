@@ -47,7 +47,6 @@ const Nav = (props) => {
     );
 
     const logged_in_nav = (
-
         <div className="nav-container">
             <div className="logo">
                 <h2>LOGO</h2>

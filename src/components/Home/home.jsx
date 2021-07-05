@@ -27,7 +27,7 @@ const Home = (props) => {
                     return (
                         <>
                         <div className="video-card-content" id={video.id}>
-                            <video controls>
+                            <video controls autoPlay muted>
                                 <source src={props.baseURL + video.video} type="video/mp4"></source>
                             </video>
                         </div>

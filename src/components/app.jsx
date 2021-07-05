@@ -135,6 +135,7 @@ class App extends Component {
     };
 
     render() {
+        console.log("APP STATE", this.state);
         return (
             <div className="container-fluid p-0">
                 <Nav logged_in={this.state.logged_in} Logout={this.handle_logout} username={this.state.username} />

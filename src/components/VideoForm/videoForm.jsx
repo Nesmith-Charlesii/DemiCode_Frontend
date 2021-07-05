@@ -49,6 +49,7 @@ class VideoForm extends Component {
     }
 
     render() {
+        console.log("STATE", this.state);
         return (
             <div className="videoForm-container my-5">
                 <form onSubmit={this.handleSubmit}>
@@ -56,7 +57,7 @@ class VideoForm extends Component {
                         <label htmlFor="title">Title:</label>
                         <input className="form-control" type="text" name="title" onChange={this.handleChange} value={this.state.title}/>
                         <label htmlFor="video">Upload Video:</label>
-                        <input className="form-control" type="file" accept="video/*" name="video" onChange={this.handleVideoChange} value={this.state.video}/>
+                        <input className="form-control" type="file" accept="video/*" name="video" onChange={this.handleVideoChange}/>
                         <br/>
                         <button className="confirmReg">Upload</button>
                     </div>
