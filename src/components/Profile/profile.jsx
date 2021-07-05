@@ -1,8 +1,77 @@
 import React from 'react';
+import './profile.css';
 
 const Profile = (props) => {
-    return (
 
+    return (
+        <div className="profile-wrapper">
+            <div className="profile-display-wrapper">
+                <div className="profile-image">
+                    <img src={props.baseURL + props.profile} alt="profile"/>
+                </div>
+                <div className="profile-name">
+                    <p>{props.user.first_name}</p>
+                </div>
+            </div>
+            <div className="profile-content-wrapper">
+                <div className="content-wrapper">
+                    <h2>Most Read Articles</h2>
+                    <div className="article-content my-4">
+                        {props.myArticles.map((article) => {
+                        return (
+                            <div className="article-card-content" key={article.id}>
+                                <div className="card-title">
+                                    <h4>{article.title}</h4>
+                                </div>
+                            </div>
+                        )
+                    })}
+                    </div>
+                </div>
+                <div className="content-wrapper">
+                    <h2>Most Watched Videos</h2>
+                    <div className="video-content my-4">
+                        {props.myVideos.map((video) => {
+                        return (
+                            <div className="video-card-content" key={video.id}>
+                                <video controls autoPlay muted>
+                                    <source src={props.baseURL + video.video} type="video/mp4"></source>
+                                </video>
+                            </div>
+                        )
+                    })}
+                    </div>
+                </div>
+                <div className="content-wrapper">
+                    <h2>Snippets</h2>
+                    <div className="snippet-content my-4">
+                        {props.mySnippets.map((snippet) => {
+                        return (
+                            <div className="snippet-card-content" key={snippet.id}>
+                                <div className="card-title">
+                                    <h4>{snippet.title}</h4>
+                                </div>
+                            </div>
+                        )
+                    })}
+                    </div>
+                </div>
+                <div className="content-wrapper">
+                    <h2>Popular Products</h2>
+                    <div className="product-content my-4">
+                        {props.myProducts.map((product) => {
+                        return (
+                            <div className="product-card-content" key={product.id}>
+                                <div className="card-title">
+                                    <h4>{product.name}</h4>
+                                </div>
+                            </div>
+                        )
+                    })}
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 

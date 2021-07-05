@@ -13,19 +13,21 @@ import SnippetForm from './SnippetForm/snippetForm';
 import VideoForm from './VideoForm/videoForm';
 import Checkout from './Checkout/stripeAPI';
 import Home from './Home/home';
+import Profile from './Profile/profile';
 
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "",
+            user: "",
             logged_in: localStorage.getItem('token') ? true : false,
             articles: [],
             snippets: [],
             videos: [],
             products: [],
-            baseURL: "http://127.0.0.1:8000"
+            baseURL: "http://127.0.0.1:8000",
+            profile_photo: null
         }
     }
 
@@ -34,7 +36,6 @@ class App extends Component {
         if(this.state.logged_in) {
             try {
                 const user = jwtDecode(jwt)
-                console.log(user)
                 console.log(`User: ${user.username}\nLogged_In: ${this.state.logged_in}`)
             }
             catch(error) {
@@ -44,6 +45,7 @@ class App extends Component {
         this.allBlogs()
         this.allSnippets()
         this.allVideos()
+        this.profileImage()
     }
 
     Register = async(newbie) => {
@@ -68,7 +70,7 @@ class App extends Component {
             console.log('THIS IS THE TOKEN', data.token)
             this.setState({
                 logged_in: true,
-                username: data.user.username
+                user: data.user
             })
             console.log(`hello ${this.state.username}`)
         }
@@ -118,6 +120,25 @@ class App extends Component {
         }
     }
 
+    profileImage = async() => {
+        try {
+            let token = localStorage.getItem('token');
+            let config = {headers: { Authorization: `JWT ${token}`}};
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/image_creator`, config);
+            console.log('IMAGE', data)
+            if(data.photo_upload != null) {
+                this.setState({
+                    profile_photo: data.photo_upload
+                }, console.log('Profile Photo', this.state.profile_photo))
+            } else {
+                console.log('USER HAS NO IMAGE')
+            }
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
     Contributors = async() => {
         try {
             let {data} = await axios.get(`http://127.0.0.1:8000/api/users`)
@@ -131,16 +152,16 @@ class App extends Component {
     
     handle_logout = () => {
         localStorage.removeItem('token');
-        this.setState({ logged_in: false, username: '' } , () => console.log(this.state.logged_in, this.state.username, localStorage.getItem('token')));
+        this.setState({ logged_in: false, user: '', profile_photo: null } , () => console.log(this.state.logged_in, this.state.username, localStorage.getItem('token')));
     };
 
     render() {
-        console.log("APP STATE", this.state);
         return (
             <div className="container-fluid p-0">
-                <Nav logged_in={this.state.logged_in} Logout={this.handle_logout} username={this.state.username} />
+                <Nav logged_in={this.state.logged_in} Logout={this.handle_logout} username={this.state.user.username} />
                 <Switch>
                     <Route path="/home" render={props => <Home {...props} articles={this.state.articles} snippets={this.state.snippets} videos={this.state.videos} products={this.state.products} baseURL={this.state.baseURL}/>}/>
+                    <Route path="/profile" render={props => <Profile {...props} myArticles={this.state.articles} mySnippets={this.state.snippets} myVideos={this.state.videos} myProducts={this.state.products} baseURL={this.state.baseURL} profile={this.state.profile_photo} user={this.state.user} />}/>
                     <Route path="/register" render={props => <RegForm {...props} Register={newbie => this.Register(newbie)}/>}/>
                     <Route path="/login" render={props => <LoginForm {...props} Login={user => this.Login(user)}/>}/>
                     <Route path="/articles" render={props => <BlogForm {...props} blogSubmittal={(blog) => {this.blogSubmittal(blog)}} />}/>

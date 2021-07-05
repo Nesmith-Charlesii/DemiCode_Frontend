@@ -9,13 +9,11 @@ const Home = (props) => {
                 <div className="article-content my-4">
                     {props.articles.map((article) => {
                     return (
-                        <>
-                        <div className="article-card-content" id={article.id}>
+                        <div className="article-card-content" key={article.id}>
                             <div className="card-title">
                                 <h4>{article.title}</h4>
                             </div>
                         </div>
-                        </>
                     )
                 })}
                 </div>
@@ -25,13 +23,11 @@ const Home = (props) => {
                 <div className="video-content my-4">
                     {props.videos.map((video) => {
                     return (
-                        <>
-                        <div className="video-card-content" id={video.id}>
+                        <div className="video-card-content" key={video.id}>
                             <video controls autoPlay muted>
                                 <source src={props.baseURL + video.video} type="video/mp4"></source>
                             </video>
                         </div>
-                        </>
                     )
                 })}
                 </div>
@@ -41,13 +37,11 @@ const Home = (props) => {
                 <div className="snippet-content my-4">
                     {props.snippets.map((snippet) => {
                     return (
-                        <>
-                        <div className="snippet-card-content" id={snippet.id}>
+                        <div className="snippet-card-content" key={snippet.id}>
                             <div className="card-title">
                                 <h4>{snippet.title}</h4>
                             </div>
                         </div>
-                        </>
                     )
                 })}
                 </div>
@@ -57,13 +51,11 @@ const Home = (props) => {
                 <div className="product-content my-4">
                     {props.products.map((product) => {
                     return (
-                        <>
-                        <div className="product-card-content" id={product.id}>
+                        <div className="product-card-content" key={product.id}>
                             <div className="card-title">
                                 <h4>{product.name}</h4>
                             </div>
                         </div>
-                        </>
                     )
                 })}
                 </div>

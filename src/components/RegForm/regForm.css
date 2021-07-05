@@ -10,7 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('/src/assets/smoke.jpg');
+    background: url('/src/assets/spiralTop.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     width: 50vw;

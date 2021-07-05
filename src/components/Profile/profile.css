@@ -1,0 +1,25 @@
+.profile-wrapper {
+    padding-top: 170px;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.profile-image {
+    border: none;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    box-shadow: 2px 2px 8px rgb(50, 50, 50);
+}
+
+img {
+    width: 100%;
+}
+
+
+
+
