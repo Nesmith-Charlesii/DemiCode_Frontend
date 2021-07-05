@@ -24,7 +24,8 @@ class App extends Component {
             articles: [],
             snippets: [],
             videos: [],
-            products: []
+            products: [],
+            baseURL: "http://127.0.0.1:8000"
         }
     }
 
@@ -41,6 +42,8 @@ class App extends Component {
             }
         }
         this.allBlogs()
+        this.allSnippets()
+        this.allVideos()
     }
 
     Register = async(newbie) => {
@@ -77,7 +80,6 @@ class App extends Component {
     allBlogs = async() => {
         try {
             let {data} = await axios.get(`http://127.0.0.1:8000/api/blog_content/all`);
-            console.log(data)
             this.setState({articles: data}, () => console.log('ALLBLOGS', this.state.articles))
         }
         catch(error) {
@@ -88,7 +90,6 @@ class App extends Component {
     allSnippets = async() => {
         try {
             let {data} = await axios.get(`http://127.0.0.1:8000/api/code_snippets/all`);
-            console.log(data)
             this.setState({snippets: data}, () => console.log('ALL SNIPPETS', this.state.snippets))
         }
         catch(error) {
@@ -99,7 +100,6 @@ class App extends Component {
     allVideos = async() => {
         try {
             let {data} = await axios.get(`http://127.0.0.1:8000/api/videos/all`);
-            console.log(data)
             this.setState({videos: data}, () => console.log('ALL VIDEOS', this.state.videos))
         }
         catch(error) {
@@ -139,7 +139,7 @@ class App extends Component {
             <div className="container-fluid p-0">
                 <Nav logged_in={this.state.logged_in} Logout={this.handle_logout} username={this.state.username} />
                 <Switch>
-                    <Route path="/home" render={props => <Home {...props} articleHeaders={this.state.articles} snippets={this.state.snippets} videos={this.state.videos} products={this.state.products}/>}/>
+                    <Route path="/home" render={props => <Home {...props} articles={this.state.articles} snippets={this.state.snippets} videos={this.state.videos} products={this.state.products} baseURL={this.state.baseURL}/>}/>
                     <Route path="/register" render={props => <RegForm {...props} Register={newbie => this.Register(newbie)}/>}/>
                     <Route path="/login" render={props => <LoginForm {...props} Login={user => this.Login(user)}/>}/>
                     <Route path="/articles" render={props => <BlogForm {...props} blogSubmittal={(blog) => {this.blogSubmittal(blog)}} />}/>

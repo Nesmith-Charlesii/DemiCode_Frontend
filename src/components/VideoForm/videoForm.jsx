@@ -1,28 +1,46 @@
-import React from 'react';
-import CustomForm from '../CustomHook/customForm';
+import React, {Component} from 'react';
 import axios from 'axios';
 import './videoForm.css';
 
-const VideoForm = (props) => {
-
-    const Submittal = () => {
-        const video = {
-            //Keys must match that of the model from django exactly!
-            title: inputs.title,
-            video: inputs.video
+class VideoForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: "",
+            video: null
         }
-        console.log('Video Dict', video)
-        videoSubmittal(video)
     }
 
-    const {handleChange, handleSubmit, inputs} = CustomForm(Submittal)
+    componentDidMount() {
+        console.log('IMAGE STATE', this.state.upload)
+    }
 
-    const videoSubmittal = async(video) => {
-        console.log('video submit token', localStorage.getItem('token'))
+    handleChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        }, () => console.log('VIDEO TITLE STATE', this.state.title))
+    }
+
+    handleVideoChange = (e) => {
+        this.setState({
+            video: e.target.files[0]
+        }, () => {console.log('Video STATE', this.state.video)})
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+        let videoData = new FormData()
+        videoData.append('video', this.state.video, this.state.video.name)
+        videoData.append('title', this.state.title)
+        this.videoSubmittal(videoData)
+    }
+
+    videoSubmittal = async(videoData) => {
+        console.log('VIDEO DATA AT API', videoData)
         try {
             let token = localStorage.getItem('token');
-            let config = {headers: { Authorization: `JWT ${token}` }};
-            let {data} = await axios.post(`http://127.0.0.1:8000/api/videos/`, video, config);
+            let config = {headers: { Authorization: `JWT ${token}`}, 'content-type': 'multipart/form-data'};
+            let {data} = await axios.post(`http://127.0.0.1:8000/api/videos_creator/`, videoData, config);
             console.log('VIDEO DATA', data)
         }
         catch(error) {
@@ -30,21 +48,22 @@ const VideoForm = (props) => {
         }
     }
 
-
-    return (
-        <div className="videoForm-container my-5">
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="title">Title:</label>
-                    <input className="form-control" type="text" name="title" onChange={handleChange} value={inputs.title}/>
-                    <label htmlFor="video">Video Upload:</label>
-                    <input className="form-control" type="text" name="video" onChange={handleChange} value={inputs.video}/>
-                    <br/>
-                    <button className="confirmReg">Upload</button>
-                </div>
-            </form>
-        </div>
-    )
+    render() {
+        return (
+            <div className="videoForm-container my-5">
+                <form onSubmit={this.handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="title">Title:</label>
+                        <input className="form-control" type="text" name="title" onChange={this.handleChange} value={this.state.title}/>
+                        <label htmlFor="video">Upload Video:</label>
+                        <input className="form-control" type="file" accept="video/*" name="video" onChange={this.handleVideoChange} value={this.state.video}/>
+                        <br/>
+                        <button className="confirmReg">Upload</button>
+                    </div>
+                </form>
+            </div>
+        )
+    }
 }
 
 export default VideoForm;

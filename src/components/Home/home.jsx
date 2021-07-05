@@ -4,24 +4,70 @@ import './home.css';
 const Home = (props) => {
     return (
         <div className="brief-container">
-            <div className="article-wrapper">
+            <div className="content-wrapper">
                 <h2>Most Read Articles</h2>
-                <div className="article-content">
-                    {props.articleHeaders.map((article) => {
+                <div className="article-content my-4">
+                    {props.articles.map((article) => {
                     return (
                         <>
-                        <div className="card-content" id={article.id}>
-                            <h4>{article.title}</h4>
+                        <div className="article-card-content" id={article.id}>
+                            <div className="card-title">
+                                <h4>{article.title}</h4>
+                            </div>
                         </div>
                         </>
                     )
                 })}
                 </div>
-                <div className="article-content">
-
+            </div>
+            <div className="content-wrapper">
+                <h2>Most Watched Videos</h2>
+                <div className="video-content my-4">
+                    {props.videos.map((video) => {
+                    return (
+                        <>
+                        <div className="video-card-content" id={video.id}>
+                            <video controls>
+                                <source src={props.baseURL + video.video} type="video/mp4"></source>
+                            </video>
+                        </div>
+                        </>
+                    )
+                })}
                 </div>
             </div>
-            
+            <div className="content-wrapper">
+                <h2>Snippets</h2>
+                <div className="snippet-content my-4">
+                    {props.snippets.map((snippet) => {
+                    return (
+                        <>
+                        <div className="snippet-card-content" id={snippet.id}>
+                            <div className="card-title">
+                                <h4>{snippet.title}</h4>
+                            </div>
+                        </div>
+                        </>
+                    )
+                })}
+                </div>
+            </div>
+            <div className="content-wrapper">
+                <h2>Popular Products</h2>
+                <div className="product-content my-4">
+                    {props.products.map((product) => {
+                    return (
+                        <>
+                        <div className="product-card-content" id={product.id}>
+                            <div className="card-title">
+                                <h4>{product.name}</h4>
+                            </div>
+                        </div>
+                        </>
+                    )
+                })}
+                </div>
+            </div>
         </div>
     )
 }

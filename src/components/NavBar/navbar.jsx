@@ -7,7 +7,7 @@ const Nav = (props) => {
     const logged_out_nav = (
         <div className="nav-container">
             <div className="logo">
-                <h3>LOGO</h3>
+                <h2>LOGO</h2>
             </div>
             <nav className="nav-content">
                 <ul>
@@ -50,7 +50,7 @@ const Nav = (props) => {
 
         <div className="nav-container">
             <div className="logo">
-                <h4>logo</h4>
+                <h2>LOGO</h2>
             </div>
             <nav className="nav-content">
                 <ul>
@@ -82,7 +82,7 @@ const Nav = (props) => {
                 </div>
                 <ul>
                     <Link to='/profile'>
-                        <li><p>Hello {props.username}</p></li>
+                        <li><p><i className="fas fa-user" id="logout-icon"></i></p></li>
                     </Link>
                     <li><i className="fas fa-sign-out-alt" id="logout-icon" onClick={props.Logout} ></i></li>
                 </ul>
