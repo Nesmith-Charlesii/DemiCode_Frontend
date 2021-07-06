@@ -14,6 +14,7 @@ import VideoForm from './VideoForm/videoForm';
 import Checkout from './Checkout/stripeAPI';
 import Home from './Home/home';
 import Profile from './Profile/profile';
+import '../assets/default.png'
 
 
 class App extends Component {
@@ -31,7 +32,8 @@ class App extends Component {
             videos: [],
             products: [],
             baseURL: "http://127.0.0.1:8000",
-            profile_photo: null
+            profile_photo: '../assets/default.png',
+            registrant: false
         }
     }
 
@@ -58,6 +60,9 @@ class App extends Component {
             console.log('REGISTRANT DATA', data);
             localStorage.setItem('token', data.token);
             console.log('I AM REGISTERED!!', data.token)
+            this.setState({
+                registrant: true
+            })
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
@@ -136,12 +141,14 @@ class App extends Component {
                     profile_photo: data.photo_upload
                 }, () => console.log(this.state.profile_photo))
             } else {
-                console.log("This user has no profile photo")
+                this.setState({
+                    profile_photo: '/src/assets/default.png'
+                }, () => console.log('DEFAULT PIC', this.state.profile_photo))
             }
             
         }
         catch(error) {
-            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+            console.log(`Whoops! Looks like we're having some technical difficulties. Try again later`)
         }
     }
 
@@ -194,7 +201,14 @@ class App extends Component {
                     }}
                     />
 
-                    <Route path="/register" render={props => <RegForm {...props} Register={newbie => this.Register(newbie)}/>}/>
+                    <Route path="/register" render={props => {
+                        if(this.state.registrant === false) {
+                        return <RegForm {...props} Register={newbie => this.Register(newbie)}/>
+                        } else {
+                            return <Redirect to="/login"/>
+                        }
+                    }}
+                        />
 
                     <Route path="/login" render={props => { 
                         if(this.state.logged_in === false) { 
