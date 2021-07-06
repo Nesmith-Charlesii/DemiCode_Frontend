@@ -1,15 +1,37 @@
 .snippetForm-container {
+    height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .snippetForm-container form {
     width: 500px;
-    
+    border-radius: 10px;
+    background: url('/src/assets/keys.jpg');
+    background-size: cover;
+    background-position: 90%;
+    padding: 40px;
+    box-shadow: 6px 6px 6px rgb(20, 20, 20);
 }
 
 .snippetForm-container form label {
     padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    color: white;
+    font-weight: bold;
+}
+
+.snippetForm-container h2 {
+    color: rgb(0, 227, 248);
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 4px 2px 2px rgb(10, 10, 10);
 }
 
 .snippetForm-container form input {

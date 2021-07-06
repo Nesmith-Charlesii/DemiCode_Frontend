@@ -12,7 +12,7 @@ const Nav = (props) => {
             <nav className="nav-content">
                 <ul>
                     <Link to='/articles'>
-                        <li>articles</li>
+                        <li>thoughts</li>
                     </Link>
                     <Link to='/snippets'>
                         <li>snippets</li>
@@ -54,7 +54,7 @@ const Nav = (props) => {
             <nav className="nav-content">
                 <ul>
                     <Link to='/articles'>
-                        <li>articles</li>
+                        <li>thoughts</li>
                     </Link>
                     <Link to='/snippets'>
                         <li>snippets</li>

@@ -53,7 +53,8 @@ class VideoForm extends Component {
         return (
             <div className="videoForm-container my-5">
                 <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
+                    <h2>Upload a Video</h2>
+                    <div className="form-group my-4">
                         <label htmlFor="title">Title:</label>
                         <input className="form-control" type="text" name="title" onChange={this.handleChange} value={this.state.title}/>
                         <label htmlFor="video">Upload Video:</label>

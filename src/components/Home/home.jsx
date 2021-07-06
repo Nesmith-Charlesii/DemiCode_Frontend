@@ -24,7 +24,7 @@ const Home = (props) => {
                     {props.videos.map((video) => {
                     return (
                         <div className="video-card-content" key={video.id}>
-                            <video controls autoPlay muted>
+                            <video controls autoPlay loop muted>
                                 <source src={props.baseURL + video.video} type="video/mp4"></source>
                             </video>
                         </div>

@@ -33,6 +33,7 @@ const BlogForm = (props) => {
     return (
         <div className="blogForm-container my-5">
             <form onSubmit={handleSubmit}>
+                <h2>Share Your Knowledge</h2>
                 <div className="form-group">
                     <label htmlFor="title">Title:</label>
                     <input className="form-control" type="text" name="title" onChange={handleChange} value={inputs.title}/>

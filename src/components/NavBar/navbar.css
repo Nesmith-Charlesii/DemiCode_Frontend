@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Faster+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
 
 .nav-container {
     width: 100%;
@@ -14,7 +14,7 @@
 
 .logo {
     margin-left: 30px;
-    font-family: "Faster One", Arial, Helvetica, sans-serif;
+    font-family: "Bungee Shade", Arial, Helvetica, sans-serif;
     color: white;
     text-shadow: 3px 2px 2px rgb(4, 2, 44);
     letter-spacing: 2px;

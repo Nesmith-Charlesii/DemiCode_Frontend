@@ -36,7 +36,8 @@ const ProductForm = (props) => {
     return (
         <div className="productForm-container my-5">
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
+                <h2>Add a Product</h2>
+                <div className="form-group my-4">
                     <label htmlFor="name">Name of Product:</label>
                     <input className="form-control" type="text" name="name" onChange={handleChange} value={inputs.name}/>
                     <label htmlFor="description">Description:</label>

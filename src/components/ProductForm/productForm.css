@@ -1,15 +1,32 @@
 .productForm-container {
+    height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .productForm-container form {
     width: 500px;
-    
+    border-radius: 10px;
+    background: url('/src/assets/moonREd.png');
+    background-size: cover;
+    padding: 40px;
+    box-shadow: 6px 6px 6px rgb(20, 20, 20);
 }
 
 .productForm-container form label {
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    color: white;
+    font-weight: bold;
+}
+
+.productForm-container h2 {
+    color: rgb(242, 246, 8);
+    font-family: "Montserrat";
+    text-align: center;
 }
 
 .productForm-container form input {

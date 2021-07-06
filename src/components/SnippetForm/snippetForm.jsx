@@ -56,7 +56,8 @@ class SnippetForm extends Component {
         return (
             <div className="snippetForm-container my-5">
                 <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
+                    <h2>Create a Snippet</h2>
+                    <div className="form-group my-4">
                         <label htmlFor="title">Title:</label>
                         <input className="form-control" type="text" name="title" onChange={this.handleChange} value={this.state.title}/>
                         <label htmlFor="text">Snippet Text:</label>
