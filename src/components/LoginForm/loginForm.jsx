@@ -11,7 +11,6 @@ const LoginForm = (props) => {
             username: inputs.username,
             password: inputs.password,
         }
-        console.log('USER OBJECT', user);
         props.Login(user)
     }
 

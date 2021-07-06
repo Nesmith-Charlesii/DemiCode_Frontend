@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import axios from 'axios';
@@ -62,7 +62,6 @@ class App extends Component {
     }
 
     Login = async(user) => {
-        console.log('USER LOGIN API', user)
         try {
             let {data} = await axios.post(`http://127.0.0.1:8000/api/token-auth/`, user)
             console.log('USER DATA', data);
@@ -121,21 +120,23 @@ class App extends Component {
     }
 
     profileImage = async() => {
-        try {
-            let token = localStorage.getItem('token');
-            let config = {headers: { Authorization: `JWT ${token}`}};
-            let {data} = await axios.get(`http://127.0.0.1:8000/api/image_creator`, config);
-            console.log('IMAGE', data)
-            if(data.photo_upload != null) {
-                this.setState({
-                    profile_photo: data.photo_upload
-                }, console.log('Profile Photo', this.state.profile_photo))
-            } else {
-                console.log('USER HAS NO IMAGE')
+        if(this.state.logged_in === true) {
+            try {
+                let token = localStorage.getItem('token');
+                let config = {headers: { Authorization: `JWT ${token}`}};
+                let {data} = await axios.get(`http://127.0.0.1:8000/api/image_creator`, config);
+                // console.log('IMAGE', data)
+                if(data.photo_upload != null) {
+                    this.setState({
+                        profile_photo: data.photo_upload
+                    }, () => console.log(this.state.profile_photo))
+                } else {
+                    console.log('USER HAS NO IMAGE')
+                }
             }
-        }
-        catch(error) {
-            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+            catch(error) {
+                alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+            }
         }
     }
 
@@ -161,9 +162,27 @@ class App extends Component {
                 <Nav logged_in={this.state.logged_in} Logout={this.handle_logout} username={this.state.user.username} />
                 <Switch>
                     <Route path="/home" render={props => <Home {...props} articles={this.state.articles} snippets={this.state.snippets} videos={this.state.videos} products={this.state.products} baseURL={this.state.baseURL}/>}/>
-                    <Route path="/profile" render={props => <Profile {...props} myArticles={this.state.articles} mySnippets={this.state.snippets} myVideos={this.state.videos} myProducts={this.state.products} baseURL={this.state.baseURL} profile={this.state.profile_photo} user={this.state.user} />}/>
+
+                    <Route path="/profile" render={props => {
+                    if(this.state.logged_in === true) {
+                        return <Profile {...props} myArticles={this.state.articles} mySnippets={this.state.snippets} myVideos={this.state.videos} myProducts={this.state.products} baseURL={this.state.baseURL} profile={this.state.profile_photo} user={this.state.user} getPhoto={this.profileImage} />
+                    } else {
+                        return <Redirect to="/login"/>
+                        }
+                    }}
+                    />
+
                     <Route path="/register" render={props => <RegForm {...props} Register={newbie => this.Register(newbie)}/>}/>
-                    <Route path="/login" render={props => <LoginForm {...props} Login={user => this.Login(user)}/>}/>
+
+                    <Route path="/login" render={props => { 
+                        if(this.state.logged_in === false) { 
+                            return <LoginForm {...props} Login={user => this.Login(user)}/>
+                        } else {
+                            return <Redirect to="/profile"/>
+                        }
+                    }}
+                    />
+
                     <Route path="/articles" render={props => <BlogForm {...props} blogSubmittal={(blog) => {this.blogSubmittal(blog)}} />}/>
                     <Route path="/products" render={props => <ProductForm {...props}/>}/>
                     <Route path="/snippets" render={props => <SnippetForm {...props} />}/>

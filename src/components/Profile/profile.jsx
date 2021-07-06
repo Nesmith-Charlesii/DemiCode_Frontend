@@ -2,20 +2,20 @@ import React from 'react';
 import './profile.css';
 
 const Profile = (props) => {
-
     return (
         <div className="profile-wrapper">
             <div className="profile-display-wrapper">
                 <div className="profile-image">
-                    <img src={props.baseURL + props.profile} alt="profile"/>
+                    {props.getPhoto}
+                    <img src={props.baseURL + props.profile} alt="profile"/> 
                 </div>
                 <div className="profile-name">
-                    <p>{props.user.first_name}</p>
+                    <p>{props.user.first_name} {props.user.last_name}</p>
                 </div>
             </div>
             <div className="profile-content-wrapper">
                 <div className="content-wrapper">
-                    <h2>Most Read Articles</h2>
+                    <h2>Articles</h2>
                     <div className="article-content my-4">
                         {props.myArticles.map((article) => {
                         return (
@@ -29,12 +29,12 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <div className="content-wrapper">
-                    <h2>Most Watched Videos</h2>
+                    <h2>Videos</h2>
                     <div className="video-content my-4">
                         {props.myVideos.map((video) => {
                         return (
                             <div className="video-card-content" key={video.id}>
-                                <video controls autoPlay muted>
+                                <video controls autoPlay loop muted>
                                     <source src={props.baseURL + video.video} type="video/mp4"></source>
                                 </video>
                             </div>
@@ -57,7 +57,7 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <div className="content-wrapper">
-                    <h2>Popular Products</h2>
+                    <h2>Products</h2>
                     <div className="product-content my-4">
                         {props.myProducts.map((product) => {
                         return (
