@@ -23,6 +23,10 @@ class App extends Component {
             user: "",
             logged_in: localStorage.getItem('token') ? true : false,
             articles: [],
+            userArticles: [],
+            userSnippets: [],
+            userVideos: [],
+            userProducts: [],
             snippets: [],
             videos: [],
             products: [],
@@ -45,7 +49,6 @@ class App extends Component {
         this.allBlogs()
         this.allSnippets()
         this.allVideos()
-        this.profileImage()
     }
 
     Register = async(newbie) => {
@@ -70,8 +73,11 @@ class App extends Component {
             this.setState({
                 logged_in: true,
                 user: data.user
-            })
-            console.log(`hello ${this.state.username}`)
+            }, () => console.log(`hello ${this.state.user.username}`))
+            this.profileImage()
+            this.myArticles()
+            console.log('Called profileImage function')
+            
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
@@ -120,23 +126,38 @@ class App extends Component {
     }
 
     profileImage = async() => {
-        if(this.state.logged_in === true) {
-            try {
-                let token = localStorage.getItem('token');
-                let config = {headers: { Authorization: `JWT ${token}`}};
-                let {data} = await axios.get(`http://127.0.0.1:8000/api/image_creator`, config);
-                // console.log('IMAGE', data)
-                if(data.photo_upload != null) {
-                    this.setState({
-                        profile_photo: data.photo_upload
-                    }, () => console.log(this.state.profile_photo))
-                } else {
-                    console.log('USER HAS NO IMAGE')
-                }
+        try {
+            let token = localStorage.getItem('token');
+            let config = {headers: { Authorization: `JWT ${token}`}};
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/image_creator`, config);
+            // console.log('IMAGE', data)
+            if(data.photo_upload != null) {
+                this.setState({
+                    profile_photo: data.photo_upload
+                }, () => console.log(this.state.profile_photo))
+            } else {
+                console.log("This user has no profile photo")
             }
-            catch(error) {
-                alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
-            }
+            
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
+    myArticles = async() => {
+        console.log('inside of my articles')
+        try {
+            let token = localStorage.getItem('token');
+            let config = {headers: { Authorization: `JWT ${token}`}};
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/blog_content_creator`, config);
+            console.log(data)
+            this.setState({
+                userArticles: data
+            }, () => console.log('User articles', this.state.myArticles))
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
         }
     }
 
@@ -153,7 +174,7 @@ class App extends Component {
     
     handle_logout = () => {
         localStorage.removeItem('token');
-        this.setState({ logged_in: false, user: '', profile_photo: null } , () => console.log(this.state.logged_in, this.state.username, localStorage.getItem('token')));
+        this.setState({ logged_in: false, user: '', profile_photo: null } , () => console.log('logged in: ', this.state.logged_in, 'username: ', this.state.username, 'token: ', localStorage.getItem('token'), 'profile photo: ', this.state.profile_photo));
     };
 
     render() {
@@ -165,7 +186,7 @@ class App extends Component {
 
                     <Route path="/profile" render={props => {
                     if(this.state.logged_in === true) {
-                        return <Profile {...props} myArticles={this.state.articles} mySnippets={this.state.snippets} myVideos={this.state.videos} myProducts={this.state.products} baseURL={this.state.baseURL} profile={this.state.profile_photo} user={this.state.user} getPhoto={this.profileImage} />
+                        return <Profile {...props} myArticles={this.state.userArticles} mySnippets={this.state.snippets} myVideos={this.state.videos} myProducts={this.state.products} baseURL={this.state.baseURL} profile={this.state.profile_photo} user={this.state.user} />
                     } else {
                         return <Redirect to="/login"/>
                         }

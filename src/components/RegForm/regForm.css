@@ -10,9 +10,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('/src/assets/spiralTop.jpg');
+    background: url('/src/assets/rainbowKey.png');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: 50%;
     width: 50vw;
 }
 
