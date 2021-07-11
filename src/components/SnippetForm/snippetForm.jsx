@@ -13,9 +13,9 @@ class SnippetForm extends Component {
         }
     }
 
-    componentDidMount() {
-        console.log('IMAGE STATE', this.state.upload)
-    }
+    // componentDidMount() {
+    //     console.log('IMAGE STATE', this.state.upload)
+    // }
 
     handleChange = e => {
         this.setState({
@@ -54,7 +54,7 @@ class SnippetForm extends Component {
 
     render() {
         return (
-            <div className="snippetForm-container my-5">
+            <div className="snippetForm-container my-4">
                 <form onSubmit={this.handleSubmit}>
                     <h2>Create a Snippet</h2>
                     <div className="form-group my-4">

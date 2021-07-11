@@ -14,7 +14,6 @@ import VideoForm from './VideoForm/videoForm';
 import Checkout from './Checkout/stripeAPI';
 import Home from './Home/home';
 import Profile from './Profile/profile';
-import '../assets/default.png'
 
 
 class App extends Component {
@@ -31,8 +30,8 @@ class App extends Component {
             snippets: [],
             videos: [],
             products: [],
+            profile_photo: null,
             baseURL: "http://127.0.0.1:8000",
-            profile_photo: '../assets/default.png',
             registrant: false
         }
     }
@@ -131,21 +130,18 @@ class App extends Component {
     }
 
     profileImage = async() => {
+        console.log('Inside of profile image func')
         try {
             let token = localStorage.getItem('token');
             let config = {headers: { Authorization: `JWT ${token}`}};
             let {data} = await axios.get(`http://127.0.0.1:8000/api/image_creator`, config);
-            // console.log('IMAGE', data)
-            if(data.photo_upload != null) {
+            console.log(data)
+            if(data.photo_upload) {
                 this.setState({
                     profile_photo: data.photo_upload
-                }, () => console.log(this.state.profile_photo))
-            } else {
-                this.setState({
-                    profile_photo: '/src/assets/default.png'
-                }, () => console.log('DEFAULT PIC', this.state.profile_photo))
-            }
-            
+                }, () => console.log('PHOTO DATA', this.state.profile_photo))
+            } 
+            console.log("Profile Photo", this.state.profile_photo)
         }
         catch(error) {
             console.log(`Whoops! Looks like we're having some technical difficulties. Try again later`)
@@ -157,8 +153,7 @@ class App extends Component {
         try {
             let token = localStorage.getItem('token');
             let config = {headers: { Authorization: `JWT ${token}`}};
-            let {data} = await axios.get(`http://127.0.0.1:8000/api/blog_content_creator`, config);
-            console.log(data)
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/blog_content_creator`, config)
             this.setState({
                 userArticles: data
             }, () => console.log('User articles', this.state.myArticles))
@@ -193,8 +188,7 @@ class App extends Component {
 
                     <Route path="/profile" render={props => {
                     if(this.state.logged_in === true) {
-                        this.profileImage()
-                        return <Profile {...props} myArticles={this.state.userArticles} mySnippets={this.state.snippets} myVideos={this.state.videos} myProducts={this.state.products} baseURL={this.state.baseURL} profile={this.state.profile_photo} user={this.state.user} />
+                        return <Profile {...props} myArticles={this.state.userArticles} mySnippets={this.state.snippets} myVideos={this.state.videos} myProducts={this.state.products} baseURL={this.state.baseURL} profilePhoto={this.state.profile_photo} user={this.state.user} />
                     } else {
                         return <Redirect to="/login"/>
                         }

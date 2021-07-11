@@ -6,7 +6,7 @@ const Profile = (props) => {
         <div className="profile-wrapper">
             <div className="profile-display-wrapper">
                 <div className="profile-image">
-                    <img src={props.baseURL + props.profile} alt="profile"/> 
+                    <img src={props.baseURL + props.profilePhoto} alt="profile"/> 
                 </div>
                 <div className="profile-name">
                     <p>{props.user.first_name} {props.user.last_name}</p>

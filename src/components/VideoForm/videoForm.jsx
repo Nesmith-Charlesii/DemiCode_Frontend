@@ -11,9 +11,9 @@ class VideoForm extends Component {
         }
     }
 
-    componentDidMount() {
-        console.log('IMAGE STATE', this.state.upload)
-    }
+    // componentDidMount() {
+    //     console.log('IMAGE STATE', this.state.upload)
+    // }
 
     handleChange = e => {
         this.setState({
@@ -49,7 +49,6 @@ class VideoForm extends Component {
     }
 
     render() {
-        console.log("STATE", this.state);
         return (
             <div className="videoForm-container my-5">
                 <form onSubmit={this.handleSubmit}>

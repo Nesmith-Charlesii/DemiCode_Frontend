@@ -1,0 +1,23 @@
+.stripe-form {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    font-weight: bold;
+}
+
+.email {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-number {
+    display: flex;
+    flex-direction: column;
+}
+
+#card-element {
+    color: black;
+    width: 100%;
+}

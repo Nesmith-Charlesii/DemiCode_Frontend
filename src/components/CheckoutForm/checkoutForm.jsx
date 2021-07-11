@@ -1,6 +1,7 @@
 import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import React, {useState} from "react";
 import ApiService from '../ApiService/apiService';
+import './checkoutForm.css';
 
 const CheckoutForm = () => {
     const [error, setError] = useState(null);
