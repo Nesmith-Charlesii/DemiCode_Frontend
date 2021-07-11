@@ -138,11 +138,15 @@ class App extends Component {
             let token = localStorage.getItem('token');
             let config = {headers: { Authorization: `JWT ${token}`}};
             let {data} = await axios.get(`http://127.0.0.1:8000/api/image_creator`, config);
-            if(data) {
+            if(data.photo_upload) {
+                this.setState({
+                    profile_photo: data.photo_upload
+                }, () => console.log('PHOTO DATA', this.state.profile_photo))
+            } else {
                 this.setState({
                     profile_photo: data
                 }, () => console.log('PHOTO DATA', this.state.profile_photo))
-            } 
+            }
         }
         catch(error) {
             console.log(`Whoops! Looks like we're having some technical difficulties. Try again later`)
