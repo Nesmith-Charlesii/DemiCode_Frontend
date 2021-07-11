@@ -30,6 +30,9 @@ const LoginForm = (props) => {
                         <div className="login-button-div my-3">
                             <button className="confirmLogin">Continue</button>
                         </div>
+                        <div className="login-redirect my-4">
+                            <p>No account? No worries!</p><a href="/#" onClick={props.register}>Sign up here</a>
+                        </div>
                     </div>
                 </form>
             </div>

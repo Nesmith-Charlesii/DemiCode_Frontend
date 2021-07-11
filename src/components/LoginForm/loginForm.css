@@ -21,6 +21,22 @@
     text-align: center;
 }
 
+.login-redirect {
+    text-align: center;
+    font-weight: bold;
+}
+
+.login-redirect a {
+    font-size: 18px;
+    text-decoration: none;
+    color:rgb(255, 255, 255);
+    transition: color 500ms ease-in-out;
+}
+
+.login-redirect a:hover {
+    color:rgb(179, 172, 190);
+}
+
 .loginForm-container form {
     width: 500px;
 }
