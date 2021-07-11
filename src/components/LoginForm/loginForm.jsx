@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomForm from '../CustomHook/customForm';
 import './loginForm.css';
-//import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 const LoginForm = (props) => {
 
@@ -31,7 +31,8 @@ const LoginForm = (props) => {
                             <button className="confirmLogin">Continue</button>
                         </div>
                         <div className="login-redirect my-4">
-                            <p>No account? No worries!</p><a href="/#" onClick={props.register}>Sign up here</a>
+                            <p>No account? No worries!</p>
+                            <Link to="/register">Sign up here</Link>
                         </div>
                     </div>
                 </form>

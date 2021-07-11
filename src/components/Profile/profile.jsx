@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './profile.css';
 
 const Profile = (props) => {
@@ -13,6 +14,26 @@ const Profile = (props) => {
                     <p id="aka">A.K.A</p>
                     <p>{props.user.username}</p>
                 </div>
+            </div>
+            <div className="profile-nav">
+                <ul>
+                    <div className="link">
+                        <Link to="/articles">Articles</Link>
+                        <span></span>
+                    </div>
+                    <div className="link">
+                        <Link to="/snippets">Snippets</Link>
+                        <span></span>
+                    </div>
+                    <div className="link">
+                        <Link to="/videos">Videos</Link>
+                        <span></span>
+                    </div>
+                    <div className="link">
+                        <Link to="/products">Products</Link>
+                        <span></span>
+                    </div>
+                </ul>
             </div>
             <div className="profile-content-wrapper">
                 <div className="content-wrapper">

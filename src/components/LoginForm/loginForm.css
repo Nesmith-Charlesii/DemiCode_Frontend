@@ -13,7 +13,7 @@
     border-radius: 12px;
     background: url('/src/assets/background_graphic.png');
     background-size: cover;
-    box-shadow: 7px 4px 10px rgb(21, 1, 53);
+    box-shadow: 7px 4px 10px rgb(7, 0, 17);
 }
 
 .loginForm-container h2 {
@@ -26,15 +26,19 @@
     font-weight: bold;
 }
 
+.login-redirect p {
+    margin-bottom: 0px;
+}
+
 .login-redirect a {
     font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
     color:rgb(255, 255, 255);
-    transition: color 500ms ease-in-out;
 }
 
 .login-redirect a:hover {
-    color:rgb(179, 172, 190);
+    text-decoration: underline;
 }
 
 .loginForm-container form {
@@ -72,4 +76,9 @@
     font-weight: bolder;
     letter-spacing: 1px;
     box-shadow: 4px 4px 6px rgb(33, 32, 34);
+    transition: background-color 300ms ease-in-out;
+}
+
+.confirmLogin:hover {
+    background-color:rgb(54, 9, 126); 
 }
