@@ -48,7 +48,7 @@
     align-items: center;
     justify-content: space-around;
     animation-name: appear;
-    animation-duration: 2s;
+    animation-duration: 3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -101,7 +101,7 @@
         opacity: 0;
     }
     100% {
-        color: rgb(251, 255, 24);
+        color: rgb(24, 228, 255);
         /* text-decoration: line-through; */
         top: 0px;
         opacity: 1;
@@ -131,8 +131,8 @@
     width: 220px;
     color: white;
     animation-name: extend;
-    animation-duration: 1s;
-    animation-iteration-count: 300ms;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
 

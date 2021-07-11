@@ -23,13 +23,13 @@ class App extends Component {
             user: "",
             logged_in: localStorage.getItem('token') ? true : false,
             articles: [],
+            snippets: [],
+            videos: [],
+            products: [],
             userArticles: [],
             userSnippets: [],
             userVideos: [],
             userProducts: [],
-            snippets: [],
-            videos: [],
-            products: [],
             profile_photo: null,
             baseURL: "http://127.0.0.1:8000",
             registrant: false
@@ -156,7 +156,52 @@ class App extends Component {
             let {data} = await axios.get(`http://127.0.0.1:8000/api/blog_content_creator`, config)
             this.setState({
                 userArticles: data
-            }, () => console.log('User articles', this.state.myArticles))
+            }, () => console.log('User articles', this.state.userArticles))
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
+    mySnippets = async() => {
+        console.log('inside of my snippets')
+        try {
+            let token = localStorage.getItem('token');
+            let config = {headers: { Authorization: `JWT ${token}`}};
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/code_snippets_creator`, config)
+            this.setState({
+                userSnippets: data
+            }, () => console.log('User snippets', this.state.userSnippets))
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
+    myVideos = async() => {
+        console.log('inside of my videos')
+        try {
+            let token = localStorage.getItem('token');
+            let config = {headers: { Authorization: `JWT ${token}`}};
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/videos_creator`, config)
+            this.setState({
+                userVideos: data
+            }, () => console.log('User videos', this.state.userVideos))
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
+    myProducts = async() => {
+        console.log('inside of my products')
+        try {
+            let token = localStorage.getItem('token');
+            let config = {headers: { Authorization: `JWT ${token}`}};
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/digital_products_creator`, config)
+            this.setState({
+                userProducts: data
+            }, () => console.log('User products', this.state.userProducts))
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
@@ -188,7 +233,7 @@ class App extends Component {
 
                     <Route path="/profile" render={props => {
                     if(this.state.logged_in === true) {
-                        return <Profile {...props} myArticles={this.state.userArticles} mySnippets={this.state.snippets} myVideos={this.state.videos} myProducts={this.state.products} baseURL={this.state.baseURL} profilePhoto={this.state.profile_photo} user={this.state.user} />
+                        return <Profile {...props} myArticles={this.state.userArticles} mySnippets={this.state.userSnippets} myVideos={this.state.userVideos} myProducts={this.state.userProducts} baseURL={this.state.baseURL} profilePhoto={this.state.profile_photo} user={this.state.user} />
                     } else {
                         return <Redirect to="/login"/>
                         }
