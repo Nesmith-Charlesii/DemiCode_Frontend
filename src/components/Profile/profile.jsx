@@ -1,14 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import './profile.css';
 
 const Profile = (props) => {
     const [content, setContent] = useState("")
     
-    useEffect(() => {
-        console.log('EFFECT')
-    }, [content])
-
     let image = (props.baseURL + props.profilePhoto)
 
     const Articles = (props) => {
@@ -33,8 +29,8 @@ const Profile = (props) => {
     return (
         <div className="profile-wrapper">
             <div className="profile-display-wrapper">
-                <div className="profile-image" style={{backgroundImage: `url(${image})`, backgroundSize: 'cover'}}>
-                    {/* <img src={props.baseURL + props.profilePhoto} alt="profile"/>  */}
+                <div className="profile-image" style={{backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+                    
                 </div>
                 <div className="profile-name">
                     <p>{props.user.first_name} {props.user.last_name}</p>
@@ -45,19 +41,19 @@ const Profile = (props) => {
             <div className="profile-nav">
                 <ul>
                     <div className="link">
-                        <Link to="/profile" onClick={() => setContent(Articles)}>Articles</Link>
+                        <Link to="/profile" onClick={() => props.getArticles()}>Articles</Link>
                         <span></span>
                     </div>
                     <div className="link">
-                        <a href="/profile" onClick={() => setContent("snippets")}>Snippets</a>
+                        <a href="/profile" onClick={() => props.getSnippets()}>Snippets</a>
                         <span></span>
                     </div>
                     <div className="link">
-                        <a href="/profile" onClick={() => setContent("videos")}>Videos</a>
+                        <a href="/profile" onClick={() => props.getVideos()}>Videos</a>
                         <span></span>
                     </div>
                     <div className="link">
-                        <a href="/profile" onClick={() => setContent("products")}>Products</a>
+                        <a href="/profile" onClick={() => props.getProducts()}>Products</a>
                         <span></span>
                     </div>
                 </ul>

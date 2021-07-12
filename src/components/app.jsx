@@ -246,7 +246,7 @@ class App extends Component {
 
                     <Route path="/profile" render={props => {
                     if(this.state.logged_in === true) {
-                        return <Profile {...props} myArticles={this.state.userArticles} mySnippets={this.state.userSnippets} myVideos={this.state.userVideos} myProducts={this.state.userProducts} baseURL={this.state.baseURL} profilePhoto={this.state.profile_photo} user={this.state.user} />
+                        return <Profile {...props} getArticles={() => this.myArticles()} myArticles={this.state.userArticles} mySnippets={this.state.userSnippets} myVideos={this.state.userVideos} myProducts={this.state.userProducts} baseURL={this.state.baseURL} profilePhoto={this.state.profile_photo} user={this.state.user} />
                     } else {
                         return <Redirect to="/login"/>
                         }
