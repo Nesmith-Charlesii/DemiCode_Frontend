@@ -42,6 +42,17 @@ class App extends Component {
             try {
                 const user = jwtDecode(jwt)
                 console.log(`User: ${user.username}\nLogged_In: ${this.state.logged_in}`)
+                console.log(user)
+                this.profileImage()
+                let config = {headers: { Authorization: `JWT ${jwt}`}};
+                const current_user = async() => {
+                    let {data} = await axios.get(`http://127.0.0.1:8000/api/current_user`, config)
+                    console.log("Current User", data)
+                    this.setState({
+                        user: data
+                    })
+                }
+                current_user()
             }
             catch(error) {
                 console.log(error)
@@ -80,9 +91,6 @@ class App extends Component {
             }, () => console.log(`hello ${this.state.user.username}`))
             this.profileImage()
             this.myArticles()
-            this.mySnippets()
-            this.myVideos()
-            this.myProducts()
             console.log('Called profileImage function')
             
         }

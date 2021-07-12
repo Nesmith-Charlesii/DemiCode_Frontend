@@ -1,13 +1,40 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import './profile.css';
 
 const Profile = (props) => {
+    const [content, setContent] = useState("")
+    
+    useEffect(() => {
+        console.log('EFFECT')
+    }, [content])
+
+    let image = (props.baseURL + props.profilePhoto)
+
+    const Articles = (props) => {
+        return (
+            <div className="content-wrapper">
+                <h2>Articles</h2>
+                <div className="article-content my-4">
+                    {props.myArticles.map((article) => {
+                    return (
+                        <div className="article-card-content" key={article.id}>
+                            <div className="card-title">
+                                <h4>{article.title}</h4>
+                            </div>
+                        </div>
+                    )
+                })}
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className="profile-wrapper">
             <div className="profile-display-wrapper">
-                <div className="profile-image">
-                    <img src={props.baseURL + props.profilePhoto} alt="profile"/> 
+                <div className="profile-image" style={{backgroundImage: `url(${image})`, backgroundSize: 'cover'}}>
+                    {/* <img src={props.baseURL + props.profilePhoto} alt="profile"/>  */}
                 </div>
                 <div className="profile-name">
                     <p>{props.user.first_name} {props.user.last_name}</p>
@@ -18,24 +45,32 @@ const Profile = (props) => {
             <div className="profile-nav">
                 <ul>
                     <div className="link">
-                        <Link to="/articles">Articles</Link>
+                        <Link to="/profile" onClick={() => setContent(Articles)}>Articles</Link>
                         <span></span>
                     </div>
                     <div className="link">
-                        <Link to="/snippets">Snippets</Link>
+                        <a href="/profile" onClick={() => setContent("snippets")}>Snippets</a>
                         <span></span>
                     </div>
                     <div className="link">
-                        <Link to="/videos">Videos</Link>
+                        <a href="/profile" onClick={() => setContent("videos")}>Videos</a>
                         <span></span>
                     </div>
                     <div className="link">
-                        <Link to="/products">Products</Link>
+                        <a href="/profile" onClick={() => setContent("products")}>Products</a>
                         <span></span>
                     </div>
                 </ul>
             </div>
             <div className="profile-content-wrapper">
+                {content}
+            </div>
+        </div>
+
+    )
+}
+
+            /* <div className="profile-content-wrapper">
                 <div className="content-wrapper">
                     <h2>Articles</h2>
                     <div className="article-content my-4">
@@ -93,8 +128,7 @@ const Profile = (props) => {
                     </div>
                 </div>
             </div>
-        </div>
-    )
-}
+                </div> */
+
 
 export default Profile;
