@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import './profile.css';
+import profileCSS from './profile.css';
 
 const Profile = (props) => {
 
@@ -10,6 +10,11 @@ const Profile = (props) => {
     const [videos, setVideos] = useState([])
     const [products, setProducts] = useState([])
     const [content, setContent] = useState(null)
+    let CSS = () => {
+        return (
+            profileCSS
+        )
+    }
 
     useEffect(() => {
         // Must retrieve all data from api's on page load for .map function to render correct data
@@ -17,6 +22,7 @@ const Profile = (props) => {
         mySnippets()
         myVideos()
         myProducts()
+        CSS()
         console.log('Articles useEffect', articles)
         console.log('Snippets useEffect', snippets)
         console.log('Videos useEffect', videos)
@@ -170,7 +176,7 @@ const Profile = (props) => {
             <div className="profile-nav">
                 <ul>
                     <div className="link">
-                        <Link to="/profile" onClick={() => setContent(Articles)}>Articles</Link>
+                        <Link to="/profile" onClick={() => {setContent(Articles); CSS()}}>Articles</Link>
                         <span></span>
                     </div>
                     <div className="link">
@@ -194,66 +200,5 @@ const Profile = (props) => {
 
     )
 }
-
-            /* <div className="profile-content-wrapper">
-                <div className="content-wrapper">
-                    <h2>Articles</h2>
-                    <div className="article-content my-4">
-                        {props.myArticles.map((article) => {
-                        return (
-                            <div className="article-card-content" key={article.id}>
-                                <div className="card-title">
-                                    <h4>{article.title}</h4>
-                                </div>
-                            </div>
-                        )
-                    })}
-                    </div>
-                </div>
-                <div className="content-wrapper">
-                    <h2>Videos</h2>
-                    <div className="video-content my-4">
-                        {props.myVideos.map((video) => {
-                        return (
-                            <div className="video-card-content" key={video.id}>
-                                <video controls autoPlay loop muted>
-                                    <source src={props.baseURL + video.video} type="video/mp4"></source>
-                                </video>
-                            </div>
-                        )
-                    })}
-                    </div>
-                </div>
-                <div className="content-wrapper">
-                    <h2>Snippets</h2>
-                    <div className="snippet-content my-4">
-                        {props.mySnippets.map((snippet) => {
-                        return (
-                            <div className="snippet-card-content" key={snippet.id}>
-                                <div className="card-title">
-                                    <h4>{snippet.title}</h4>
-                                </div>
-                            </div>
-                        )
-                    })}
-                    </div>
-                </div>
-                <div className="content-wrapper">
-                    <h2>Products</h2>
-                    <div className="product-content my-4">
-                        {props.myProducts.map((product) => {
-                        return (
-                            <div className="product-card-content" key={product.id}>
-                                <div className="card-title">
-                                    <h4>{product.name}</h4>
-                                </div>
-                            </div>
-                        )
-                    })}
-                    </div>
-                </div>
-            </div>
-                </div> */
-
 
 export default Profile;
