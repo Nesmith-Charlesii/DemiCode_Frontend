@@ -1,18 +1,25 @@
 import React, {useState, useEffect} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 import './profile.css';
 
 const Profile = (props) => {
-    const [content, setContent] = useState("")
-    
-    let image = (props.baseURL + props.profilePhoto)
+
+    const [articles, setArticles] = useState([])
+
+    useEffect(() => {
+        myArticles()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []); 
+
+    const [content, setContent] = useState(null)
 
     const Articles = (props) => {
         return (
             <div className="content-wrapper">
                 <h2>Articles</h2>
                 <div className="article-content my-4">
-                    {props.myArticles.map((article) => {
+                    {articles.map((article) => {
                     return (
                         <div className="article-card-content" key={article.id}>
                             <div className="card-title">
@@ -26,6 +33,67 @@ const Profile = (props) => {
         )
     }
 
+    const myArticles = async() => {
+        console.log('inside of my articles')
+        try {
+            let token = localStorage.getItem('token');
+            let config = {headers: { Authorization: `JWT ${token}`}};
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/blog_content_creator`, config)
+            setArticles(data)
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
+    const mySnippets = async() => {
+        console.log('inside of my snippets')
+        try {
+            let token = localStorage.getItem('token');
+            let config = {headers: { Authorization: `JWT ${token}`}};
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/code_snippets_creator`, config)
+            this.setState({
+                userSnippets: data
+            }, () => console.log('User snippets', this.state.userSnippets))
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
+    const myVideos = async() => {
+        console.log('inside of my videos')
+        try {
+            let token = localStorage.getItem('token');
+            let config = {headers: { Authorization: `JWT ${token}`}};
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/videos_creator`, config)
+            this.setState({
+                userVideos: data
+            }, () => console.log('User videos', this.state.userVideos))
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
+    const myProducts = async() => {
+        console.log('inside of my products')
+        try {
+            let token = localStorage.getItem('token');
+            let config = {headers: { Authorization: `JWT ${token}`}};
+            let {data} = await axios.get(`http://127.0.0.1:8000/api/digital_products_creator`, config)
+            this.setState({
+                userProducts: data
+            }, () => console.log('User products', this.state.userProducts))
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
+
+    let image = (props.baseURL + props.profilePhoto)
+    
     return (
         <div className="profile-wrapper">
             <div className="profile-display-wrapper">
@@ -41,22 +109,22 @@ const Profile = (props) => {
             <div className="profile-nav">
                 <ul>
                     <div className="link">
-                        <Link to="/profile" onClick={() => props.getArticles()}>Articles</Link>
+                        <Link to="/profile" onClick={() => setContent(Articles)}>Articles</Link>
                         <span></span>
                     </div>
                     <div className="link">
-                        <a href="/profile" onClick={() => props.getSnippets()}>Snippets</a>
+                        <Link to="/profile" onClick={() => props.getSnippets()}>Snippets</Link>
                         <span></span>
                     </div>
                     <div className="link">
-                        <a href="/profile" onClick={() => props.getVideos()}>Videos</a>
+                        <Link to="/profile" onClick={() => props.getVideos()}>Videos</Link>
                         <span></span>
                     </div>
                     <div className="link">
-                        <a href="/profile" onClick={() => props.getProducts()}>Products</a>
+                        <Link to="/profile" onClick={() => props.getProducts()}>Products</Link>
                         <span></span>
                     </div>
-                </ul>
+                </ul> 
             </div>
             <div className="profile-content-wrapper">
                 {content}

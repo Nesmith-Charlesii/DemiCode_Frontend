@@ -41,13 +41,13 @@ class App extends Component {
         if(this.state.logged_in) {
             try {
                 const user = jwtDecode(jwt)
-                console.log(`User: ${user.username}\nLogged_In: ${this.state.logged_in}`)
-                console.log(user)
+                //console.log(`User: ${user.username}\nLogged_In: ${this.state.logged_in}`)
+                //console.log(user)
                 this.profileImage()
                 let config = {headers: { Authorization: `JWT ${jwt}`}};
                 const current_user = async() => {
                     let {data} = await axios.get(`http://127.0.0.1:8000/api/current_user`, config)
-                    console.log("Current User", data)
+                    //console.log("Current User", data)
                     this.setState({
                         user: data
                     })
@@ -82,7 +82,7 @@ class App extends Component {
     Login = async(user) => {
         try {
             let {data} = await axios.post(`http://127.0.0.1:8000/api/token-auth/`, user)
-            console.log('USER DATA', data);
+            //console.log('USER DATA', data);
             localStorage.setItem('token', data.token);
             console.log('THIS IS THE TOKEN', data.token)
             this.setState({
@@ -90,7 +90,7 @@ class App extends Component {
                 user: data.user
             }, () => console.log(`hello ${this.state.user.username}`))
             this.profileImage()
-            this.myArticles()
+            // this.myArticles()
             console.log('Called profileImage function')
             
         }
@@ -102,7 +102,7 @@ class App extends Component {
     allBlogs = async() => {
         try {
             let {data} = await axios.get(`http://127.0.0.1:8000/api/blog_content/all`);
-            this.setState({articles: data}, () => console.log('ALLBLOGS', this.state.articles))
+            this.setState({articles: data}/*, () => console.log('ALLBLOGS', this.state.articles)*/)
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
@@ -112,7 +112,7 @@ class App extends Component {
     allSnippets = async() => {
         try {
             let {data} = await axios.get(`http://127.0.0.1:8000/api/code_snippets/all`);
-            this.setState({snippets: data}, () => console.log('ALL SNIPPETS', this.state.snippets))
+            this.setState({snippets: data}/*, () => console.log('ALL SNIPPETS', this.state.snippets)*/)
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
@@ -122,7 +122,7 @@ class App extends Component {
     allVideos = async() => {
         try {
             let {data} = await axios.get(`http://127.0.0.1:8000/api/videos/all`);
-            this.setState({videos: data}, () => console.log('ALL VIDEOS', this.state.videos))
+            this.setState({videos: data}/*, () => console.log('ALL VIDEOS', this.state.videos)*/)
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
@@ -133,7 +133,7 @@ class App extends Component {
         try {
             let {data} = await axios.get(`http://127.0.0.1:8000/api/digital_products/all`);
             console.log(data)
-            this.setState({products: data}, () => console.log('ALL PRODUCTS', this.state.products))
+            this.setState({products: data}/*, () => console.log('ALL PRODUCTS', this.state.products)*/)
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
@@ -141,7 +141,7 @@ class App extends Component {
     }
 
     profileImage = async() => {
-        console.log('Inside of profile image func')
+        //console.log('Inside of profile image func')
         try {
             let token = localStorage.getItem('token');
             let config = {headers: { Authorization: `JWT ${token}`}};
@@ -149,7 +149,7 @@ class App extends Component {
             if(data.photo_upload) {
                 this.setState({
                     profile_photo: data.photo_upload
-                }, () => console.log('PHOTO DATA', this.state.profile_photo))
+                }/*, () => console.log('PHOTO DATA', this.state.profile_photo)*/)
             } else {
                 this.setState({
                     profile_photo: data
@@ -246,7 +246,7 @@ class App extends Component {
 
                     <Route path="/profile" render={props => {
                     if(this.state.logged_in === true) {
-                        return <Profile {...props} getArticles={() => this.myArticles()} myArticles={this.state.userArticles} mySnippets={this.state.userSnippets} myVideos={this.state.userVideos} myProducts={this.state.userProducts} baseURL={this.state.baseURL} profilePhoto={this.state.profile_photo} user={this.state.user} />
+                        return <Profile {...props} getArticles={() => this.myArticles()} myArticles={this.state.userArticles} getSnippets={() => this.mySnippets()} mySnippets={this.state.userSnippets} getVideos={() => this.myVideos()} myVideos={this.state.userVideos} getProducts={() => this.myProducts()} myProducts={this.state.userProducts} baseURL={this.state.baseURL} profilePhoto={this.state.profile_photo} user={this.state.user} />
                     } else {
                         return <Redirect to="/login"/>
                         }
