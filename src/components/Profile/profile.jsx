@@ -6,13 +6,23 @@ import './profile.css';
 const Profile = (props) => {
 
     const [articles, setArticles] = useState([])
+    const [snippets, setSnippets] = useState([])
+    const [videos, setVideos] = useState([])
+    const [products, setProducts] = useState([])
+    const [content, setContent] = useState(null)
 
     useEffect(() => {
+        // Must retrieve all data from api's on page load for .map function to render correct data
         myArticles()
+        mySnippets()
+        myVideos()
+        myProducts()
+        console.log('Articles useEffect', articles)
+        console.log('Snippets useEffect', snippets)
+        console.log('Videos useEffect', videos)
+        console.log('Products useEffect', products)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []); 
-
-    const [content, setContent] = useState(null)
 
     const Articles = (props) => {
         return (
@@ -24,6 +34,63 @@ const Profile = (props) => {
                         <div className="article-card-content" key={article.id}>
                             <div className="card-title">
                                 <h4>{article.title}</h4>
+                            </div>
+                        </div>
+                    )
+                })}
+                </div>
+            </div>
+        )
+    }
+
+    const Snippets = (props) => {
+        return (
+            <div className="content-wrapper">
+                <h2>Snippets</h2>
+                <div className="snippet-content my-4">
+                    {snippets.map((snippet) => {
+                    return (
+                        <div className="snippet-card-content" key={snippet.id}>
+                            <div className="card-title">
+                                <h4>{snippet.title}</h4>
+                            </div>
+                        </div>
+                    )
+                })}
+                </div>
+            </div>
+        )
+    }
+
+    const Videos = (props) => {
+        return (
+            <div className="content-wrapper">
+                <h2>Videos</h2>
+                <div className="video-content my-4">
+                    {videos.map((video) => {
+                    return (
+                        <div className="video-card-content" key={video.id}>
+                            <video controls autoPlay loop muted>
+                                <source src={props.baseURL + video.video} type="video/mp4"></source>
+                            </video>
+                        </div>
+                    )
+                })}
+                </div>
+            </div>
+        )
+    }
+
+    const Products = (props) => {
+        return (
+            <div className="content-wrapper">
+                <h2>Products</h2>
+                <div className="product-content my-4">
+                    {products.map((product) => {
+                    return (
+                        <div className="product-card-content" key={product.id}>
+                            <div className="card-title">
+                                <h4>{product.name}</h4>
                             </div>
                         </div>
                     )
@@ -52,9 +119,7 @@ const Profile = (props) => {
             let token = localStorage.getItem('token');
             let config = {headers: { Authorization: `JWT ${token}`}};
             let {data} = await axios.get(`http://127.0.0.1:8000/api/code_snippets_creator`, config)
-            this.setState({
-                userSnippets: data
-            }, () => console.log('User snippets', this.state.userSnippets))
+            setSnippets(data)
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
@@ -67,9 +132,7 @@ const Profile = (props) => {
             let token = localStorage.getItem('token');
             let config = {headers: { Authorization: `JWT ${token}`}};
             let {data} = await axios.get(`http://127.0.0.1:8000/api/videos_creator`, config)
-            this.setState({
-                userVideos: data
-            }, () => console.log('User videos', this.state.userVideos))
+            setVideos(data)
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
@@ -82,9 +145,7 @@ const Profile = (props) => {
             let token = localStorage.getItem('token');
             let config = {headers: { Authorization: `JWT ${token}`}};
             let {data} = await axios.get(`http://127.0.0.1:8000/api/digital_products_creator`, config)
-            this.setState({
-                userProducts: data
-            }, () => console.log('User products', this.state.userProducts))
+            setProducts(data)
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
@@ -113,15 +174,15 @@ const Profile = (props) => {
                         <span></span>
                     </div>
                     <div className="link">
-                        <Link to="/profile" onClick={() => props.getSnippets()}>Snippets</Link>
+                        <Link to="/profile" onClick={() => setContent(Snippets)}>Snippets</Link>
                         <span></span>
                     </div>
                     <div className="link">
-                        <Link to="/profile" onClick={() => props.getVideos()}>Videos</Link>
+                        <Link to="/profile" onClick={() => setContent(Videos)}>Videos</Link>
                         <span></span>
                     </div>
                     <div className="link">
-                        <Link to="/profile" onClick={() => props.getProducts()}>Products</Link>
+                        <Link to="/profile" onClick={() => setContent(Products)}>Products</Link>
                         <span></span>
                     </div>
                 </ul> 
