@@ -30,10 +30,18 @@ const Profile = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [CSS()]); 
 
+    const Default = (props) => {
+        return (
+            <div className="content-load">
+                <i class="fas fa-check-square fa-7x" id="check-icon"><p id="check-text" className="my-3">Content Loaded! Select from dash nav above</p></i>
+            </div>
+        )
+    }
+
     const Articles = (props) => {
         return (
             <div className="content-wrapper">
-                <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Create an article</p></i>
+                <i className="fas fa-arrow-circle-up fa-5x" id="upload-arrow"><p id="icon-text" className="my-3">Create an article</p></i>
                 <div className="article-content">
                     {articles.map((article) => {
                     return (
@@ -160,7 +168,7 @@ const Profile = (props) => {
 
 
     let image = (props.baseURL + props.profilePhoto)
-    const [content, setContent] = useState(Articles)
+    const [content, setContent] = useState(Default)
     
     return (
         <div className="profile-wrapper">
