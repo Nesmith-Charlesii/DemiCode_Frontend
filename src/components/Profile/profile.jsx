@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import '../fontawesome/css/all.min.css';
 import profileCSS from './profile.css';
 
 const Profile = (props) => {
@@ -33,8 +34,8 @@ const Profile = (props) => {
     const Articles = (props) => {
         return (
             <div className="content-wrapper">
-                <h2>Articles</h2>
-                <div className="article-content my-4">
+                <i class="fas fa-arrow-circle-up fa-5x"><p id="icon-text">Create an article</p></i>
+                <div className="article-content my-4 mx-5">
                     {articles.map((article) => {
                     return (
                         <div className="article-card-content" key={article.id}>
@@ -52,7 +53,7 @@ const Profile = (props) => {
     const Snippets = (props) => {
         return (
             <div className="content-wrapper">
-                <h2>Snippets</h2>
+                {/* <h2>Snippets</h2> */}
                 <div className="snippet-content my-4">
                     {snippets.map((snippet) => {
                     return (
@@ -71,7 +72,7 @@ const Profile = (props) => {
     const Videos = (props) => {
         return (
             <div className="content-wrapper">
-                <h2>Videos</h2>
+                {/* <h2>Videos</h2> */}
                 <div className="video-content my-4">
                     {videos.map((video) => {
                     return (
@@ -90,7 +91,7 @@ const Profile = (props) => {
     const Products = (props) => {
         return (
             <div className="content-wrapper">
-                <h2>Products</h2>
+                {/* <h2>Products</h2> */}
                 <div className="product-content my-4">
                     {products.map((product) => {
                     return (
