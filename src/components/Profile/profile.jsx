@@ -41,7 +41,9 @@ const Profile = (props) => {
     const Articles = (props) => {
         return (
             <div className="content-wrapper">
-                <i className="fas fa-arrow-circle-up fa-5x" id="upload-arrow"><p id="icon-text" className="my-3">Create an article</p></i>
+                <Link to="/articles">
+                    <i className="fas fa-arrow-circle-up fa-5x" id="upload-arrow"><p id="icon-text" className="my-3">Create an article</p></i>
+                </Link>
                 <div className="article-content">
                     {articles.map((article) => {
                     return (
@@ -85,7 +87,7 @@ const Profile = (props) => {
                     return (
                         <div className="video-card-content" key={video.id}>
                             <video controls autoPlay loop muted>
-                                <source src={props.baseURL + video.video} type="video/mp4"></source>
+                                <source src={baseURL + video.video} type="video/mp4"></source>
                             </video>
                         </div>
                     )
@@ -168,6 +170,7 @@ const Profile = (props) => {
 
 
     let image = (props.baseURL + props.profilePhoto)
+    const baseURL = 'http://127.0.0.1:8000'
     const [content, setContent] = useState(Default)
     
     return (
@@ -189,15 +192,15 @@ const Profile = (props) => {
                         <span></span>
                     </div>
                     <div className="link">
-                        <Link to="/profile" onClick={() => setContent(Snippets)}>Snippets</Link>
+                        <Link to="/profile" onClick={() => {setContent(Snippets); CSS()}}>Snippets</Link>
                         <span></span>
                     </div>
                     <div className="link">
-                        <Link to="/profile" onClick={() => setContent(Videos)}>Videos</Link>
+                        <Link to="/profile" onClick={() => {setContent(Videos); CSS()}}>Videos</Link>
                         <span></span>
                     </div>
                     <div className="link">
-                        <Link to="/profile" onClick={() => setContent(Products)}>Products</Link>
+                        <Link to="/profile" onClick={() => {setContent(Products); CSS()}}>Products</Link>
                         <span></span>
                     </div>
                 </ul> 
