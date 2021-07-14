@@ -10,7 +10,7 @@ const Profile = (props) => {
     const [snippets, setSnippets] = useState([])
     const [videos, setVideos] = useState([])
     const [products, setProducts] = useState([])
-    const [content, setContent] = useState(null)
+    
     let CSS = () => {
         return (
             profileCSS
@@ -23,19 +23,18 @@ const Profile = (props) => {
         mySnippets()
         myVideos()
         myProducts()
-        CSS()
         console.log('Articles useEffect', articles)
         console.log('Snippets useEffect', snippets)
         console.log('Videos useEffect', videos)
         console.log('Products useEffect', products)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []); 
+    }, [CSS()]); 
 
     const Articles = (props) => {
         return (
             <div className="content-wrapper">
-                <i class="fas fa-arrow-circle-up fa-5x"><p id="icon-text" class="my-3">Create an article</p></i>
-                <div className="article-content my-4 mx-5">
+                <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Create an article</p></i>
+                <div className="article-content">
                     {articles.map((article) => {
                     return (
                         <div className="article-card-content" key={article.id}>
@@ -53,8 +52,8 @@ const Profile = (props) => {
     const Snippets = (props) => {
         return (
             <div className="content-wrapper">
-                <i class="fas fa-arrow-circle-up fa-5x"><p id="icon-text" class="my-3">Create a snippet</p></i>
-                <div className="snippet-content my-4 mx-5">
+                <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Create a snippet</p></i>
+                <div className="snippet-content">
                     {snippets.map((snippet) => {
                     return (
                         <div className="snippet-card-content" key={snippet.id}>
@@ -72,8 +71,8 @@ const Profile = (props) => {
     const Videos = (props) => {
         return (
             <div className="content-wrapper">
-                <i class="fas fa-arrow-circle-up fa-5x"><p id="icon-text" class="my-3">Upload a video</p></i>
-                <div className="video-content my-4 mx-5">
+                <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Upload a video</p></i>
+                <div className="video-content">
                     {videos.map((video) => {
                     return (
                         <div className="video-card-content" key={video.id}>
@@ -91,8 +90,8 @@ const Profile = (props) => {
     const Products = (props) => {
         return (
             <div className="content-wrapper">
-                <i class="fas fa-arrow-circle-up fa-5x"><p id="icon-text" class="my-3">Create a product</p></i>
-                <div className="product-content my-4 mx-5">
+                <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Create a product</p></i>
+                <div className="product-content my-4">
                     {products.map((product) => {
                     return (
                         <div className="product-card-content" key={product.id}>
@@ -161,6 +160,7 @@ const Profile = (props) => {
 
 
     let image = (props.baseURL + props.profilePhoto)
+    const [content, setContent] = useState(Articles)
     
     return (
         <div className="profile-wrapper">
