@@ -62,7 +62,9 @@ const Profile = (props) => {
     const Snippets = (props) => {
         return (
             <div className="content-wrapper">
-                <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Create a snippet</p></i>
+                <Link to="/snippets">
+                    <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Create a snippet</p></i>
+                </Link>
                 <div className="snippet-content">
                     {snippets.map((snippet) => {
                     return (
@@ -81,7 +83,9 @@ const Profile = (props) => {
     const Videos = (props) => {
         return (
             <div className="content-wrapper">
-                <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Upload a video</p></i>
+                <Link to="/videos">
+                    <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Upload a video</p></i>
+                </Link>
                 <div className="video-content">
                     {videos.map((video) => {
                     return (
@@ -100,7 +104,9 @@ const Profile = (props) => {
     const Products = (props) => {
         return (
             <div className="content-wrapper">
-                <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Create a product</p></i>
+                <Link to="/products">
+                    <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Create a product</p></i>
+                </Link>
                 <div className="product-content my-4">
                     {products.map((product) => {
                     return (
