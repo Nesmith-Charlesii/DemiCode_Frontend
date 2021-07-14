@@ -22,8 +22,6 @@
     background-color: rgb(255, 255, 255);
     height: 100vh;
     width: 100vw;
-    padding-top: 40px;
-    padding-left: 80px;
 }
 
 
@@ -111,6 +109,8 @@ img {
 }
 
 .content-wrapper {
+    padding-top: 40px;
+    padding-left: 80px;
     display: flex;
     align-items: center;
     animation-name: fadeIn;
@@ -127,10 +127,11 @@ img {
     }
 }
 
-.fas fa-arrow-circle-up {
+.fas {
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: rgb(34, 2, 70);
 }
 
 #icon-text {

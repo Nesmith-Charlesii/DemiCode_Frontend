@@ -34,7 +34,7 @@ const Profile = (props) => {
     const Articles = (props) => {
         return (
             <div className="content-wrapper">
-                <i class="fas fa-arrow-circle-up fa-5x"><p id="icon-text">Create an article</p></i>
+                <i class="fas fa-arrow-circle-up fa-5x"><p id="icon-text" class="my-3">Create an article</p></i>
                 <div className="article-content my-4 mx-5">
                     {articles.map((article) => {
                     return (
@@ -53,8 +53,8 @@ const Profile = (props) => {
     const Snippets = (props) => {
         return (
             <div className="content-wrapper">
-                {/* <h2>Snippets</h2> */}
-                <div className="snippet-content my-4">
+                <i class="fas fa-arrow-circle-up fa-5x"><p id="icon-text" class="my-3">Create a snippet</p></i>
+                <div className="snippet-content my-4 mx-5">
                     {snippets.map((snippet) => {
                     return (
                         <div className="snippet-card-content" key={snippet.id}>
@@ -72,8 +72,8 @@ const Profile = (props) => {
     const Videos = (props) => {
         return (
             <div className="content-wrapper">
-                {/* <h2>Videos</h2> */}
-                <div className="video-content my-4">
+                <i class="fas fa-arrow-circle-up fa-5x"><p id="icon-text" class="my-3">Upload a video</p></i>
+                <div className="video-content my-4 mx-5">
                     {videos.map((video) => {
                     return (
                         <div className="video-card-content" key={video.id}>
@@ -91,8 +91,8 @@ const Profile = (props) => {
     const Products = (props) => {
         return (
             <div className="content-wrapper">
-                {/* <h2>Products</h2> */}
-                <div className="product-content my-4">
+                <i class="fas fa-arrow-circle-up fa-5x"><p id="icon-text" class="my-3">Create a product</p></i>
+                <div className="product-content my-4 mx-5">
                     {products.map((product) => {
                     return (
                         <div className="product-card-content" key={product.id}>
