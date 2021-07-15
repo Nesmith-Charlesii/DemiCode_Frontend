@@ -15,13 +15,6 @@ class BlogForm extends Component {
         }
     }
 
-    handleKeyDown = (e) => {
-        if(e.keycode === 13) {
-            console.log(e.key)
-            this.handleChange()
-        }
-    }
-
     handleChange = e => {
         console.log(e.target.value)
         this.setState({
@@ -65,7 +58,7 @@ class BlogForm extends Component {
                     <h2>Share Your Knowledge</h2>
                     <div className="form-group">
                         <label htmlFor="title">Title:</label>
-                        <input className="form-control" type="text" name="title" onChange={this.handleChange} onKeyDown={this.handleKeyDown} value={this.state.title}/>
+                        <input className="form-control" type="text" name="title" onChange={this.handleChange} value={this.state.title}/>
                         <div className="text-tools">
                             <i className="fas fa-bold"></i>
                             <i className="fas fa-italic"></i>
