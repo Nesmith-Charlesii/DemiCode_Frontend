@@ -53,11 +53,13 @@ const BlogForm = (props) => {
                     <label htmlFor="content">Content:</label>
                     <textarea className="form-control" type="text" name="content" onChange={handleChange} value={inputs.content}/>
                     <br/>
-                    <button className="confirmReg">Sign Up!</button>
+                    <button className="confirmReg">Submit!</button>
                 </div>
             </form>
             <div className="article-display">
-                
+                <textarea id="display-text">
+
+                </textarea>
             </div>
         </div>
     )

@@ -1,9 +1,8 @@
 .blogForm-container {
     height: 100vh;
     display: flex;
-    /* justify-content: center; */
+    justify-content: space-around;
     padding-top: 50px;
-    padding-left: 50px;
 }
 
 .blogForm-container form {
@@ -37,7 +36,7 @@
 }
 
 .blogForm-container form input {
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 
 .text-tools {
@@ -57,4 +56,12 @@
 
 textarea {
     height: 300px;
+}
+
+#display-text {
+    height: 80vh;
+    width: 38vw;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 6px 6px 6px rgb(24, 5, 66);
 }
