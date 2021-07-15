@@ -9,7 +9,7 @@ class ProductForm extends Component {
             name: "",
             description: "",
             product_image: null,
-            price: null
+            price: 0
         }
     }
 
@@ -21,27 +21,29 @@ class ProductForm extends Component {
 
     handleImageChange = e => {
         this.setState({
-            upload: e.target.files[0]
-        }, () => {console.log('PRODUCT IMAGE', this.state.upload)})
+            product_image: e.target.files[0]
+        }, () => {console.log('PRODUCT IMAGE', this.state.product_image)})
     }
 
     handleSubmit = e => {
         e.preventDefault();
-        let formData = new FormData()
-        formData.append('upload', this.state.upload, this.state.upload.name)
-        formData.append('title', this.state.title)
-        formData.append('text', this.state.text)
-        console.log('UPLOAD STATE NAME', this.state.upload.name)
-        this.snippetSubmittal(formData)
+        let fd = new FormData()
+        // Form data 1st param must match the name of model field in django
+        fd.append('name', this.state.name)
+        fd.append('description', this.state.description)
+        fd.append('image', this.state.product_image, this.state.product_image.name)
+        fd.append('price', this.state.price)
+        console.log('Product Image State Name', this.state.product_image.name)
+        this.productSubmittal(fd)
     }
 
-    productSubmittal = async(formData) => {
-        console.log('PRODUCT FORM DATA AT API', formData)
+    productSubmittal = async(fd) => {
+        console.log('PRODUCT FORM DATA AT API', fd)
         try {
             let token = localStorage.getItem('token');
             let config = {headers: { Authorization: `JWT ${token}`}, 'content-type': 'multipart/form-data'};
-            let {data} = await axios.post(`http://127.0.0.1:8000/api/code_snippets_creator/`, formData, config);
-            console.log('SNIPPET DATA', data)
+            let {data} = await axios.post(`http://127.0.0.1:8000/api/digital_products_creator/`, fd, config);
+            console.log('Product Data', data)
         }
         catch(error) {
             alert(`Whoops! ${error} Looks like we're having some technical difficulties. Try again later`)
@@ -59,7 +61,7 @@ class ProductForm extends Component {
                         <label htmlFor="description">Description:</label>
                         <textarea className="form-control" type="text" name="description" onChange={this.handleChange} value={this.state.description}/>
                         <label htmlFor="image">Product Image:</label>
-                        <input className="form-control" type="file" name="image" onChange={this.handleChange} value={this.state.product_image}/>
+                        <input className="form-control" type="file" accept="image/*" name="product_image" onChange={this.handleImageChange}/>
                         <label htmlFor="price">Price:</label>
                         <input className="form-control" type="text" name="price" onChange={this.handleChange} value={this.state.price}/>
                         <br/>

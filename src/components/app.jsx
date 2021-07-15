@@ -61,6 +61,7 @@ class App extends Component {
         this.allBlogs()
         this.allSnippets()
         this.allVideos()
+        this.allProducts()
     }
 
     Register = async(newbie) => {
@@ -133,7 +134,7 @@ class App extends Component {
         try {
             let {data} = await axios.get(`http://127.0.0.1:8000/api/digital_products/all`);
             console.log(data)
-            this.setState({products: data}/*, () => console.log('ALL PRODUCTS', this.state.products)*/)
+            this.setState({products: data}, () => console.log('ALL PRODUCTS', this.state.products))
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
