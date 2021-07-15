@@ -20,7 +20,7 @@ const Home = (props) => {
                 </div>
             </div>
             <div className="content-wrapper-home">
-                
+                <h3>Videos</h3>
                 <div className="video-content-home my-4">
                     {props.videos.map((video) => {
                         return (
@@ -34,7 +34,7 @@ const Home = (props) => {
                 </div>
             </div>
             <div className="content-wrapper-home">
-                
+                <h3>Snippets</h3>
                 <div className="snippet-content-home my-4">
                     {props.snippets.map((snippet) => {
                     return (
@@ -48,7 +48,7 @@ const Home = (props) => {
                 </div>
             </div>
             <div className="content-wrapper-home">
-                
+                <h3>Products</h3>
                 <div className="product-content-home my-4">
                     {props.products.map((product) => {
                     return (
