@@ -13,10 +13,6 @@ class SnippetForm extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     console.log('IMAGE STATE', this.state.upload)
-    // }
-
     handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value
