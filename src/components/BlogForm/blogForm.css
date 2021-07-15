@@ -9,7 +9,7 @@
     height: 80vh;
     width: 38vw;
     border-radius: 10px;
-    background: url('/src/assets/banana.jpg');
+    background: url('/src/assets/setMoon.png');
     background-size: cover;
     background-position: 90%;
     padding: 40px;
@@ -22,17 +22,17 @@
     padding-bottom: 15px;
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     letter-spacing: 2px;
-    color: rgb(255, 255, 255);
+    color: rgb(246, 246, 246);
     font-weight: bold;
 }
 
 .blogForm-container h2 {
-    color: rgb(203, 248, 0);
+    color: rgb(87, 0, 248);
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     text-align: center;
     font-weight: bold;
     letter-spacing: 2px;
-    text-shadow: 4px 2px 2px rgb(10, 10, 10);
+    /* text-shadow: 4px 2px 2px rgb(10, 10, 10); */
 }
 
 .blogForm-container form input {
@@ -49,19 +49,39 @@
     box-shadow: 4px 4px 8px rgb(20, 20, 20);
 }
 
+.text-tools i {
+    color: white;
+}
+
 .text-tools button {
     border-radius: 5px;
     font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 2px 2px 6px rgb(10, 10, 10);
+    letter-spacing: 1px;
 }
 
 textarea {
     height: 300px;
 }
 
-#display-text {
+.article-display {
+    border: 1px solid black;
+    box-shadow: 6px 6px 6px rgb(24, 5, 66);
     height: 80vh;
     width: 38vw;
-    border: 2px solid black;
-    border-radius: 10px;
-    box-shadow: 6px 6px 6px rgb(24, 5, 66);
 }
+
+.header-image {
+    background: url('/src/assets/spiralTop.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid black;
+    height: 20vh;
+    width: 38vw;
+}
+
+.display-text {
+    height: 60vh;
+    width: 100%;
+}
+
