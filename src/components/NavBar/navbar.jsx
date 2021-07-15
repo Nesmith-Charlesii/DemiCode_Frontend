@@ -7,7 +7,7 @@ const Nav = (props) => {
     const logged_out_nav = (
         <div className="nav-container">
             <div className="logo">
-                <h2>LOGO</h2>
+                
             </div>
             <nav className="nav-content">
                 <ul>
@@ -49,7 +49,7 @@ const Nav = (props) => {
     const logged_in_nav = (
         <div className="nav-container">
             <div className="logo">
-                <h2>LOGO</h2>
+                
             </div>
             <nav className="nav-content">
                 <ul>

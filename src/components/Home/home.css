@@ -1,29 +1,21 @@
 .brief-container {
-    top: 280px;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    overflow-x: hidden;
 }
 
-.content-wrapper {
-    width: 50vw;
-    padding-bottom: 70px;
+#article-card-content:nth-child(n+4) {
+    display: none;
 }
 
-.content-wrapper h2 {
-    color: rgb(187, 187, 187);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    letter-spacing: 3px;
-    color: rgb(21, 1, 53);
-}
-.article-content {
+.article-content-home {
     display: flex;
     justify-content: flex-start;
 }
 
-.article-card-content {
+.article-card-content-home {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,9 +23,9 @@
     border: none;
     border-radius: 10px;
     background: url('/src/assets/code.png');
-    background-size: cover;
-    height: 171.92px;
-    width: 217px;
+    background-size: contain;
+    height: 350px;
+    width: 280px;
     text-shadow: 4px 2px 2px rgb(20, 20, 20);
     box-shadow: 4px 4px 6px rgb(26, 26, 26);
     margin-right: 30px;
@@ -44,12 +36,15 @@
     text-align: center;
 }
 
-.snippet-content {
+.snippet-content-home {
     display: flex;
-    justify-content: flex-start;
 }
 
-.snippet-card-content {
+#snippet-card-content:nth-child(n+4) {
+    display: none;
+}
+
+.snippet-card-content-home {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,14 +60,17 @@
     margin-right: 30px;
 }
 
-.video-content {
+.video-content-home {
     display: flex;
-    justify-content: flex-start;
 }
 
-.video-card-content video {
-    height: 167.3px;
-    width: 217px;
+#video-card-content:nth-child(n+4) {
+    display: none;
+}
+
+.video-card-content-home video {
+    height: 200.3px;
+    width: 280px;
     margin-right: 30px;
     border: none;
     border-radius: 10px;
@@ -81,7 +79,15 @@
     background-color: black;
 }
 
-.product-card-content {
+#product-card-content:nth-child(n+4) {
+    display: none;
+}
+
+.product-content-home {
+    display: flex;
+}
+
+.product-card-content-home {
     display: flex;
     justify-content: center;
     align-items: center;

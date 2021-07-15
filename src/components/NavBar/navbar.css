@@ -14,7 +14,14 @@
 
 .logo {
     position: relative;
+    width: 11.5vw;
+    height: 3.2vh;
+    padding-right: 10px;
     margin-left: 30px;
+    background: url('/src/assets/demi_logo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     font-family: "Bungee Shade", Arial, Helvetica, sans-serif;
     color: white;
     text-shadow: 3px 2px 2px rgb(4, 2, 44);
