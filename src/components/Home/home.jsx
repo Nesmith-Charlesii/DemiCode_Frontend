@@ -5,8 +5,8 @@ const Home = (props) => {
     return (
         <div className="brief-container">
             <h2>Recently uploaded content</h2>
-            <div className="content-wrapper">
-                
+            <div className="content-wrapper-home">
+                <h3>Articles</h3>
                 <div className="article-content-home my-4">
                     {props.articles.map((article) => {
                     return (
@@ -19,12 +19,12 @@ const Home = (props) => {
                 })}
                 </div>
             </div>
-            <div className="content-wrapper">
+            <div className="content-wrapper-home">
                 
                 <div className="video-content-home my-4">
                     {props.videos.map((video) => {
                         return (
-                        <div className="video-card-content-home" key={video.id}>
+                        <div className="video-card-content-home" key={video.id} id="video-card-content">
                             <video controls autoPlay loop muted>
                                 <source src={props.baseURL + video.video} type="video/mp4"></source>
                             </video>
@@ -33,12 +33,12 @@ const Home = (props) => {
                 })}
                 </div>
             </div>
-            <div className="content-wrapper">
+            <div className="content-wrapper-home">
                 
                 <div className="snippet-content-home my-4">
                     {props.snippets.map((snippet) => {
                     return (
-                        <div className="snippet-card-content-home" key={snippet.id}>
+                        <div className="snippet-card-content-home" key={snippet.id} id="snippet-card-content">
                             <div className="card-title">
                                 <h4>{snippet.title}</h4>
                             </div>
@@ -47,12 +47,12 @@ const Home = (props) => {
                 })}
                 </div>
             </div>
-            <div className="content-wrapper">
+            <div className="content-wrapper-home">
                 
                 <div className="product-content-home my-4">
                     {props.products.map((product) => {
                     return (
-                        <div className="product-card-content-home" key={product.id}>
+                        <div className="product-card-content-home" key={product.id} id="product-card-content">
                             <div className="card-title">
                                 <h4>{product.name}</h4>
                             </div>

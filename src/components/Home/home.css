@@ -1,12 +1,21 @@
 .brief-container {
+    padding-top: 140px;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    overflow-x: hidden;
+    align-items:center;
+    overflow-y: auto;
 }
 
-#article-card-content:nth-child(n+4) {
+.brief-container h2 {
+    font-size: 2.8em;
+    font-family: fantasy, Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    color: rgb(34, 2, 70);
+    padding-bottom: 20px;
+}
+
+#article-card-content:nth-child(n+5) {
     display: none;
 }
 
@@ -40,7 +49,7 @@
     display: flex;
 }
 
-#snippet-card-content:nth-child(n+4) {
+#snippet-card-content:nth-child(n+5) {
     display: none;
 }
 
@@ -53,8 +62,8 @@
     border-radius: 10px;
     background: url('/src/assets/snippet.png');
     background-size: cover;
-    height: 171.92px;
-    width: 217px;
+    height: 220px;
+    width: 280px;
     text-shadow: 4px 2px 2px rgb(20, 20, 20);
     box-shadow: 4px 4px 6px rgb(26, 26, 26);
     margin-right: 30px;
@@ -64,7 +73,7 @@
     display: flex;
 }
 
-#video-card-content:nth-child(n+4) {
+#video-card-content:nth-child(n+5) {
     display: none;
 }
 
@@ -79,7 +88,7 @@
     background-color: black;
 }
 
-#product-card-content:nth-child(n+4) {
+#product-card-content:nth-child(n+5) {
     display: none;
 }
 
