@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import CustomForm from '../CustomHook/customForm';
 import '../fontawesome/css/all.min.css';
 import axios from 'axios';
 import './blogForm.css';
@@ -11,13 +10,16 @@ class BlogForm extends Component {
         this.state = {
             title: "",
             content: "",
-            header_image: null
+            header_image: null,
+            text: ""
         }
     }
 
     handleChange = e => {
+        console.log(e.target.value)
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            text: e.target.value
         })
     }
 
@@ -58,12 +60,12 @@ class BlogForm extends Component {
                         <label htmlFor="title">Title:</label>
                         <input className="form-control" type="text" name="title" onChange={this.handleChange} value={this.state.title}/>
                         <div className="text-tools">
-                            <i class="fas fa-bold"></i>
-                            <i class="fas fa-italic"></i>
-                            <i class="fas fa-align-left"></i>
-                            <i class="fas fa-align-center"></i>
-                            <i class="fas fa-align-right"></i>
-                            <i class="fas fa-underline"></i>
+                            <i className="fas fa-bold"></i>
+                            <i className="fas fa-italic"></i>
+                            <i className="fas fa-align-left"></i>
+                            <i className="fas fa-align-center"></i>
+                            <i className="fas fa-align-right"></i>
+                            <i className="fas fa-underline"></i>
                             <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Uppercase text">Upper Case</button>
                             <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Lowercase text">Lower Case</button>
                             <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Capitalize text">Capitalize</button>
@@ -80,7 +82,7 @@ class BlogForm extends Component {
 
                     </div>
                     <div className="display-text">
-                        
+                        <p>{this.state.text}</p>
                     </div>
                 </div>
             </div>
