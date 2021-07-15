@@ -188,8 +188,9 @@ img {
     color: white;
     border: none;
     border-radius: 10px;
-    background: url('/src/assets/spiralTop.jpg');
-    background-size: contain;
+    background: url('/src/assets/background-graphic.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 171.92px;
     width: 217px;
     text-shadow: 4px 2px 2px rgb(20, 20, 20);

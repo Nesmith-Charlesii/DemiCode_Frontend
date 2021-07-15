@@ -1,5 +1,6 @@
 import React from 'react';
 import CustomForm from '../CustomHook/customForm';
+import '../fontawesome/css/all.min.css';
 import axios from 'axios';
 import './blogForm.css';
 
@@ -37,12 +38,27 @@ const BlogForm = (props) => {
                 <div className="form-group">
                     <label htmlFor="title">Title:</label>
                     <input className="form-control" type="text" name="title" onChange={handleChange} value={inputs.title}/>
+                    <div className="text-tools">
+                        <i class="fas fa-bold"></i>
+                        <i class="fas fa-italic"></i>
+                        <i class="fas fa-align-left"></i>
+                        <i class="fas fa-align-center"></i>
+                        <i class="fas fa-align-right"></i>
+                        <i class="fas fa-underline"></i>
+                        <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Uppercase text">Upper Case</button>
+                        <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Lowercase text">Lower Case</button>
+                        <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Capitalize text">Capitalize</button>
+                        <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Clear text">Clear Text</button>
+                    </div>
                     <label htmlFor="content">Content:</label>
                     <textarea className="form-control" type="text" name="content" onChange={handleChange} value={inputs.content}/>
                     <br/>
                     <button className="confirmReg">Sign Up!</button>
                 </div>
             </form>
+            <div className="article-display">
+                
+            </div>
         </div>
     )
 }

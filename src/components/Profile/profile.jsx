@@ -107,7 +107,7 @@ const Profile = (props) => {
                 <Link to="/products">
                     <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Create a product</p></i>
                 </Link>
-                <div className="product-content my-4">
+                <div className="product-content">
                     {products.map((product) => {
                     return (
                         <div className="product-card-content" key={product.id}>

@@ -1,12 +1,14 @@
 .blogForm-container {
     height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    padding-top: 50px;
+    padding-left: 50px;
 }
 
 .blogForm-container form {
-    width: 500px;
+    height: 80vh;
+    width: 38vw;
     border-radius: 10px;
     background: url('/src/assets/banana.jpg');
     background-size: cover;
@@ -38,3 +40,21 @@
     margin-bottom: 10px;
 }
 
+.text-tools {
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 4px 4px 8px rgb(20, 20, 20);
+}
+
+.text-tools button {
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea {
+    height: 300px;
+}
