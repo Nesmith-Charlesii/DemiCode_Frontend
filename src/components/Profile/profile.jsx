@@ -33,7 +33,7 @@ const Profile = (props) => {
     const Default = (props) => {
         return (
             <div className="content-load">
-                <i class="fas fa-check-square fa-7x" id="check-icon"><p id="check-text" className="my-3">Content Loaded! Select from dash nav above</p></i>
+                <i className="fas fa-check-square fa-7x" id="check-icon"><p id="check-text" className="my-3">Content Loaded! Select from dash nav above</p></i>
             </div>
         )
     }

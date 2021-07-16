@@ -12,22 +12,20 @@ class BlogForm extends Component {
             content: "",
             header_image: null,
             text: "",
-            textSelect: ""
-        }
-    }
-
-    highlight = () => {
-        let highlight = window.getSelection().toString()
-        if(highlight !== "") {
-            this.setState({
-                textSelect: highlight
-            }, () => console.log("HIGHLIGHT", this.state.textSelect))
         }
     }
 
     bold = () => {
-        let boldText = document.querySelector('textarea')
-        boldText.style.fontWeight='bold'
+        let highlight = window.getSelection().toString();
+        console.log(highlight)
+        let text = this.state.text
+        let words = text.split(" ") // .split() will split words at parameter given. Places items into an array
+        words.forEach((item) => {
+            if(highlight === item) {
+                console.log(`Item: ${item} = Highlight: ${highlight}`)
+                
+            }
+        })
     }
 
     handleChange = e => {
@@ -106,7 +104,7 @@ class BlogForm extends Component {
                             </button>
                         </div>
                         <label htmlFor="content">Content:</label>
-                        <textarea id="content-box" className="form-control" type="text" name="content" onChange={this.handleChange} onMouseUp={this.highlight} value={this.state.content}>
+                        <textarea id="content-box" className="content-box form-control" type="text" name="content" onChange={this.handleChange} value={this.state.content}>
                             
                         </textarea>
                         <br/>
