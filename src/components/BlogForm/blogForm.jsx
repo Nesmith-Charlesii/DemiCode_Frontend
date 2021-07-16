@@ -11,12 +11,26 @@ class BlogForm extends Component {
             title: "",
             content: "",
             header_image: null,
-            text: ""
+            text: "",
+            textSelect: ""
         }
     }
 
+    highlight = () => {
+        let highlight = window.getSelection().toString()
+        if(highlight !== "") {
+            this.setState({
+                textSelect: highlight
+            }, () => console.log("HIGHLIGHT", this.state.textSelect))
+        }
+    }
+
+    bold = () => {
+        let boldText = document.querySelector('textarea')
+        boldText.style.fontWeight='bold'
+    }
+
     handleChange = e => {
-        console.log(e.target.value)
         this.setState({
             [e.target.name]: e.target.value,
             text: e.target.value
@@ -60,19 +74,41 @@ class BlogForm extends Component {
                         <label htmlFor="title">Title:</label>
                         <input className="form-control" type="text" name="title" onChange={this.handleChange} value={this.state.title}/>
                         <div className="text-tools">
-                            <i className="fas fa-bold"></i>
-                            <i className="fas fa-italic"></i>
-                            <i className="fas fa-align-left"></i>
-                            <i className="fas fa-align-center"></i>
-                            <i className="fas fa-align-right"></i>
-                            <i className="fas fa-underline"></i>
-                            <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Uppercase text">Upper Case</button>
-                            <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Lowercase text">Lower Case</button>
-                            <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Capitalize text">Capitalize</button>
-                            <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Clear text">Clear Text</button>
+                            <button type="button" data-toggle="tooltip" data-placement="top" onClick={this.bold}>
+                                <i className="fas fa-bold"></i>
+                            </button>
+                            <button type="button" data-toggle="tooltip" data-placement="top">
+                                <i className="fas fa-italic"></i>
+                            </button>
+                            <button type="button" data-toggle="tooltip" data-placement="top">
+                                <i className="fas fa-align-left"></i>
+                            </button>
+                            <button type="button" data-toggle="tooltip" data-placement="top">
+                                <i className="fas fa-align-center"></i>
+                            </button>
+                            <button type="button" data-toggle="tooltip" data-placement="top">
+                                <i className="fas fa-align-right"></i>
+                            </button>
+                            <button type="button" data-toggle="tooltip" data-placement="top">
+                                <i className="fas fa-underline"></i>
+                            </button>
+                            <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Uppercase text">
+                                Upper Case
+                            </button>
+                            <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Lowercase text">
+                                Lower Case
+                            </button>
+                            <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Capitalize text">
+                                Capitalize
+                            </button>
+                            <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Clear text">
+                                Clear Text
+                            </button>
                         </div>
                         <label htmlFor="content">Content:</label>
-                        <textarea className="form-control" type="text" name="content" onChange={this.handleChange} value={this.state.content}/>
+                        <textarea id="content-box" className="form-control" type="text" name="content" onChange={this.handleChange} onMouseUp={this.highlight} value={this.state.content}>
+                            
+                        </textarea>
                         <br/>
                         <button className="confirmReg">Submit!</button>
                     </div>
@@ -81,7 +117,7 @@ class BlogForm extends Component {
                     <div className="header-image">
 
                     </div>
-                    <textarea className="display-text" value={this.state.text}>
+                    <textarea className="display-text" defaultValue={this.state.text}>
                         
                     </textarea>
                 </div>

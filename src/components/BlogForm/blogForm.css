@@ -27,7 +27,7 @@
 }
 
 .blogForm-container h2 {
-    color: rgb(87, 0, 248);
+    color: rgb(255, 255, 255);
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     text-align: center;
     font-weight: bold;
@@ -50,11 +50,17 @@
 }
 
 .text-tools i {
-    color: white;
+    color: rgb(255, 255, 255);
+}
+
+.text-tools i:hover{
+    transform: scale(1.2);
+    color:rgb(235, 250, 103);
 }
 
 .text-tools button {
-    border-radius: 5px;
+    border: none;
+    background: transparent;
     font-family: Arial, Helvetica, sans-serif;
     text-shadow: 2px 2px 6px rgb(10, 10, 10);
     letter-spacing: 1px;
