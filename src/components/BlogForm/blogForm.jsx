@@ -16,16 +16,7 @@ class BlogForm extends Component {
     }
 
     bold = () => {
-        let highlight = window.getSelection().toString();
-        console.log(highlight)
-        let text = this.state.text
-        let words = text.split(" ") // .split() will split words at parameter given. Places items into an array
-        words.forEach((item) => {
-            if(highlight === item) {
-                console.log(`Item: ${item} = Highlight: ${highlight}`)
-                
-            }
-        })
+        document.execCommand('bold');
     }
 
     handleChange = e => {
@@ -72,41 +63,41 @@ class BlogForm extends Component {
                         <label htmlFor="title">Title:</label>
                         <input className="form-control" type="text" name="title" onChange={this.handleChange} value={this.state.title}/>
                         <div className="text-tools">
-                            <button type="button" data-toggle="tooltip" data-placement="top" onClick={this.bold}>
+                            <button className="editor" data-command="bold" type="button" data-toggle="tooltip" data-placement="top" onClick={this.bold}>
                                 <i className="fas fa-bold"></i>
                             </button>
-                            <button type="button" data-toggle="tooltip" data-placement="top">
+                            <button className="editor" data-command="italic" type="button" data-toggle="tooltip" data-placement="top">
                                 <i className="fas fa-italic"></i>
                             </button>
-                            <button type="button" data-toggle="tooltip" data-placement="top">
+                            <button className="editor" data-command="justifyLeft" type="button" data-toggle="tooltip" data-placement="top">
                                 <i className="fas fa-align-left"></i>
                             </button>
-                            <button type="button" data-toggle="tooltip" data-placement="top">
+                            <button className="editor" data-command="justifyCenter" type="button" data-toggle="tooltip" data-placement="top">
                                 <i className="fas fa-align-center"></i>
                             </button>
-                            <button type="button" data-toggle="tooltip" data-placement="top">
+                            <button className="editor" data-command="justifyRight" type="button" data-toggle="tooltip" data-placement="top">
                                 <i className="fas fa-align-right"></i>
                             </button>
-                            <button type="button" data-toggle="tooltip" data-placement="top">
+                            <button className="editor" data-command="underline" type="button" data-toggle="tooltip" data-placement="top">
                                 <i className="fas fa-underline"></i>
                             </button>
-                            <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Uppercase text">
+                            <button className="editor btn btn-secondary btn-sm" data-command="uppercase" type="button" data-toggle="tooltip" data-placement="top" title="Uppercase text">
                                 Upper Case
                             </button>
-                            <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Lowercase text">
+                            <button className="editor btn btn-secondary btn-sm" data-command="lowercase" type="button" data-toggle="tooltip" data-placement="top" title="Lowercase text">
                                 Lower Case
                             </button>
-                            <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Capitalize text">
+                            <button className="btn btn-secondary btn-sm" data-command="uppercase" type="button" data-toggle="tooltip" data-placement="top" title="Capitalize text">
                                 Capitalize
                             </button>
-                            <button className="btn btn-secondary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Clear text">
+                            <button className="editor btn btn-secondary btn-sm" data-command="removeFormat" type="button" data-toggle="tooltip" data-placement="top" title="Clear text">
                                 Clear Text
                             </button>
                         </div>
                         <label htmlFor="content">Content:</label>
-                        <textarea id="content-box" className="content-box form-control" type="text" name="content" onChange={this.handleChange} value={this.state.content}>
+                        <div id="content-box" className="content-box form-control" type="text" name="content" onChange={this.handleChange} value={this.state.content} contentEditable="true">
                             
-                        </textarea>
+                        </div>
                         <br/>
                         <button className="confirmReg">Submit!</button>
                     </div>

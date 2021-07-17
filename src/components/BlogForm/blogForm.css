@@ -70,6 +70,10 @@ textarea {
     height: 300px;
 }
 
+#content-box {
+    height: 300px;
+}
+
 .article-display {
     border: 1px solid black;
     box-shadow: 6px 6px 6px rgb(24, 5, 66);
