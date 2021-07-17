@@ -19,6 +19,46 @@ class BlogForm extends Component {
         document.execCommand('bold');
     }
 
+    italic = () => {
+        document.execCommand('italic');
+    }
+
+    leftAlign = () => {
+        document.execCommand('justifyLeft');
+    }
+
+    centerAlign = () => {
+        document.execCommand('justifyCenter');
+    }
+
+    rightAlign = () => {
+        document.execCommand('justifyRight');
+    }
+
+    underline = () => {
+        document.execCommand('underline');
+    }
+
+    upperCase = () => {
+        document.execCommand('uppercase');
+    }
+
+    lowerCase = () => {
+        document.execCommand('lowercase');
+    }
+
+    bullet = () => {
+        document.execCommand('insertUnorderedList');
+    }
+
+    numbered = () => {
+        document.execCommand('insertOrderedList');
+    }
+
+    clearText = () => {
+        document.execCommand('removeFormat');
+    }
+
     handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value,
@@ -63,34 +103,34 @@ class BlogForm extends Component {
                         <label htmlFor="title">Title:</label>
                         <input className="form-control" type="text" name="title" onChange={this.handleChange} value={this.state.title}/>
                         <div className="text-tools">
-                            <button className="editor" data-command="bold" type="button" data-toggle="tooltip" data-placement="top" onClick={this.bold}>
+                            <button data-command="bold" type="button" data-toggle="tooltip" data-placement="top" onClick={this.bold}>
                                 <i className="fas fa-bold"></i>
                             </button>
-                            <button className="editor" data-command="italic" type="button" data-toggle="tooltip" data-placement="top">
+                            <button data-command="italic" type="button" data-toggle="tooltip" data-placement="top">
                                 <i className="fas fa-italic"></i>
                             </button>
-                            <button className="editor" data-command="justifyLeft" type="button" data-toggle="tooltip" data-placement="top">
+                            <button data-command="justifyLeft" type="button" data-toggle="tooltip" data-placement="top">
                                 <i className="fas fa-align-left"></i>
                             </button>
-                            <button className="editor" data-command="justifyCenter" type="button" data-toggle="tooltip" data-placement="top">
+                            <button data-command="justifyCenter" type="button" data-toggle="tooltip" data-placement="top">
                                 <i className="fas fa-align-center"></i>
                             </button>
-                            <button className="editor" data-command="justifyRight" type="button" data-toggle="tooltip" data-placement="top">
+                            <button data-command="justifyRight" type="button" data-toggle="tooltip" data-placement="top">
                                 <i className="fas fa-align-right"></i>
                             </button>
-                            <button className="editor" data-command="underline" type="button" data-toggle="tooltip" data-placement="top">
+                            <button data-command="underline" type="button" data-toggle="tooltip" data-placement="top">
                                 <i className="fas fa-underline"></i>
                             </button>
-                            <button className="editor btn btn-secondary btn-sm" data-command="uppercase" type="button" data-toggle="tooltip" data-placement="top" title="Uppercase text">
+                            <button className="btn btn-secondary btn-sm" data-command="uppercase" type="button" data-toggle="tooltip" data-placement="top" title="Uppercase text">
                                 Upper Case
                             </button>
-                            <button className="editor btn btn-secondary btn-sm" data-command="lowercase" type="button" data-toggle="tooltip" data-placement="top" title="Lowercase text">
+                            <button className="btn btn-secondary btn-sm" data-command="lowercase" type="button" data-toggle="tooltip" data-placement="top" title="Lowercase text">
                                 Lower Case
                             </button>
                             <button className="btn btn-secondary btn-sm" data-command="uppercase" type="button" data-toggle="tooltip" data-placement="top" title="Capitalize text">
                                 Capitalize
                             </button>
-                            <button className="editor btn btn-secondary btn-sm" data-command="removeFormat" type="button" data-toggle="tooltip" data-placement="top" title="Clear text">
+                            <button className="btn btn-secondary btn-sm" data-command="removeFormat" type="button" data-toggle="tooltip" data-placement="top" title="Clear text">
                                 Clear Text
                             </button>
                         </div>
