@@ -60,10 +60,12 @@ class BlogForm extends Component {
     }
 
     handleChange = e => {
+        let contentEditable = document.getElementById('content-box').innerText
+        console.log(contentEditable)
         this.setState({
             [e.target.name]: e.target.value,
-            text: e.target.value
-        })
+            text: contentEditable
+        }, () => console.log('content', this.state.text))
     }
 
     handleImageChange = e => {
@@ -135,7 +137,7 @@ class BlogForm extends Component {
                             </button>
                         </div>
                         <label htmlFor="content">Content:</label>
-                        <div id="content-box" className="content-box form-control" type="text" name="content" onChange={this.handleChange} value={this.state.content} contentEditable="true">
+                        <div id="content-box" className="content-box form-control" type="text" name="content" onChange={this.handleChange}  data-value={this.state.content} contentEditable="true">
                             
                         </div>
                         <br/>
