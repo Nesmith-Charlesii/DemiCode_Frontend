@@ -60,11 +60,9 @@ class BlogForm extends Component {
     }
 
     handleChange = e => {
-        let contentEditable = document.getElementById('content-box').innerText
-        console.log(contentEditable)
         this.setState({
             [e.target.name]: e.target.value,
-            text: contentEditable
+            text: e.target.value
         }, () => console.log('content', this.state.text))
     }
 
@@ -137,9 +135,9 @@ class BlogForm extends Component {
                             </button>
                         </div>
                         <label htmlFor="content">Content:</label>
-                        <div id="content-box" className="content-box form-control" type="text" name="content" onChange={this.handleChange}  data-value={this.state.content} contentEditable="true">
+                        <textarea id="content-box" className="content-box form-control" type="text" name="content" onChange={this.handleChange} value={this.state.content}>
                             
-                        </div>
+                        </textarea>
                         <br/>
                         <button className="confirmReg">Submit!</button>
                     </div>
