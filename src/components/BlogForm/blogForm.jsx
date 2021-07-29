@@ -43,7 +43,8 @@ class BlogForm extends Component {
     }
 
     upperCase = () => {
-        document.execCommand('uppercase');
+        console.log("uppercase")
+        document.execCommand("uppercase");
     }
 
     lowerCase = () => {
@@ -58,8 +59,8 @@ class BlogForm extends Component {
         document.execCommand('insertOrderedList');
     }
 
-    clearFormat = () => {
-        document.execCommand('removeFormat');
+    clearText = () => {
+        document.execCommand('delete');
     }
 
     handleChange = e => {
@@ -125,7 +126,7 @@ class BlogForm extends Component {
                             <button data-command="underline" type="button" data-toggle="tooltip" data-placement="top" onClick={this.underline}>
                                 <i className="fas fa-underline"></i>
                             </button>
-                            <button className="btn btn-secondary btn-sm" data-command="uppercase" type="button" data-toggle="tooltip" data-placement="top" title="Uppercase text" onClick={this.upperCase}>
+                            <button data-command="uppercase" className="btn btn-secondary btn-sm"  type="button" data-toggle="tooltip" data-placement="top" title="Uppercase Text" onClick={this.upperCase}>
                                 Upper Case
                             </button>
                             <button className="btn btn-secondary btn-sm" data-command="lowercase" type="button" data-toggle="tooltip" data-placement="top" title="Lowercase text" onClick={this.lowerCase}>
@@ -134,7 +135,7 @@ class BlogForm extends Component {
                             <button className="btn btn-secondary btn-sm" data-command="uppercase" type="button" data-toggle="tooltip" data-placement="top" title="Capitalize text">
                                 Capitalize
                             </button>
-                            <button className="btn btn-secondary btn-sm" data-command="removeFormat" type="button" data-toggle="tooltip" data-placement="top" title="Clear text" onClick={this.clearText}>
+                            <button className="btn btn-secondary btn-sm" data-command="delete" type="button" data-toggle="tooltip" data-placement="top" title="Clear text" onClick={this.clearText}>
                                 Clear Text
                             </button>
                         </div>
