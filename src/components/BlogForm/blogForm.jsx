@@ -122,7 +122,7 @@ class BlogForm extends Component {
                             <button data-command="justifyRight" type="button" data-toggle="tooltip" data-placement="top" onClick={this.rightAlign}>
                                 <i className="fas fa-align-right"></i>
                             </button>
-                            <button data-command="underline" type="button" data-toggle="tooltip" data-placement="top">
+                            <button data-command="underline" type="button" data-toggle="tooltip" data-placement="top" onClick={this.underline}>
                                 <i className="fas fa-underline"></i>
                             </button>
                             <button className="btn btn-secondary btn-sm" data-command="uppercase" type="button" data-toggle="tooltip" data-placement="top" title="Uppercase text">
