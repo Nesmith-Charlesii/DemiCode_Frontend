@@ -58,7 +58,7 @@ class BlogForm extends Component {
         document.execCommand('insertOrderedList');
     }
 
-    clearText = () => {
+    clearFormat = () => {
         document.execCommand('removeFormat');
     }
 
@@ -125,16 +125,16 @@ class BlogForm extends Component {
                             <button data-command="underline" type="button" data-toggle="tooltip" data-placement="top" onClick={this.underline}>
                                 <i className="fas fa-underline"></i>
                             </button>
-                            <button className="btn btn-secondary btn-sm" data-command="uppercase" type="button" data-toggle="tooltip" data-placement="top" title="Uppercase text">
+                            <button className="btn btn-secondary btn-sm" data-command="uppercase" type="button" data-toggle="tooltip" data-placement="top" title="Uppercase text" onClick={this.upperCase}>
                                 Upper Case
                             </button>
-                            <button className="btn btn-secondary btn-sm" data-command="lowercase" type="button" data-toggle="tooltip" data-placement="top" title="Lowercase text">
+                            <button className="btn btn-secondary btn-sm" data-command="lowercase" type="button" data-toggle="tooltip" data-placement="top" title="Lowercase text" onClick={this.lowerCase}>
                                 Lower Case
                             </button>
                             <button className="btn btn-secondary btn-sm" data-command="uppercase" type="button" data-toggle="tooltip" data-placement="top" title="Capitalize text">
                                 Capitalize
                             </button>
-                            <button className="btn btn-secondary btn-sm" data-command="removeFormat" type="button" data-toggle="tooltip" data-placement="top" title="Clear text">
+                            <button className="btn btn-secondary btn-sm" data-command="removeFormat" type="button" data-toggle="tooltip" data-placement="top" title="Clear text" onClick={this.clearText}>
                                 Clear Text
                             </button>
                         </div>
