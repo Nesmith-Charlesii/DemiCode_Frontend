@@ -24,14 +24,17 @@ class BlogForm extends Component {
     }
 
     leftAlign = () => {
+        console.log("left align")
         document.execCommand('justifyLeft');
     }
 
     centerAlign = () => {
+        console.log("center align")
         document.execCommand('justifyCenter');
     }
 
     rightAlign = () => {
+        console.log("right align")
         document.execCommand('justifyRight');
     }
 
@@ -60,10 +63,11 @@ class BlogForm extends Component {
     }
 
     handleChange = e => {
+        console.log(e.target.innerText)
         this.setState({
             [e.target.name]: e.target.value,
-            text: e.target.value
-        }, () => console.log('content', this.state.text))
+            text: e.target.innerText
+        }, () => console.log('Text', this.state.text))
     }
 
     handleImageChange = e => {
@@ -106,16 +110,16 @@ class BlogForm extends Component {
                             <button data-command="bold" type="button" data-toggle="tooltip" data-placement="top" onClick={this.bold}>
                                 <i className="fas fa-bold"></i>
                             </button>
-                            <button data-command="italic" type="button" data-toggle="tooltip" data-placement="top">
+                            <button data-command="italic" type="button" data-toggle="tooltip" data-placement="top" onClick={this.italic}>
                                 <i className="fas fa-italic"></i>
                             </button>
-                            <button data-command="justifyLeft" type="button" data-toggle="tooltip" data-placement="top">
+                            <button data-command="justifyLeft" type="button" data-toggle="tooltip" data-placement="top" onClick={this.leftAlign}>
                                 <i className="fas fa-align-left"></i>
                             </button>
-                            <button data-command="justifyCenter" type="button" data-toggle="tooltip" data-placement="top">
+                            <button data-command="justifyCenter" type="button" data-toggle="tooltip" data-placement="top" onClick={this.centerAlign}>
                                 <i className="fas fa-align-center"></i>
                             </button>
-                            <button data-command="justifyRight" type="button" data-toggle="tooltip" data-placement="top">
+                            <button data-command="justifyRight" type="button" data-toggle="tooltip" data-placement="top" onClick={this.rightAlign}>
                                 <i className="fas fa-align-right"></i>
                             </button>
                             <button data-command="underline" type="button" data-toggle="tooltip" data-placement="top">
@@ -135,9 +139,9 @@ class BlogForm extends Component {
                             </button>
                         </div>
                         <label htmlFor="content">Content:</label>
-                        <textarea id="content-box" className="content-box form-control" type="text" name="content" onChange={this.handleChange} value={this.state.content}>
-                            
-                        </textarea>
+                        <div id="content-box" className="content-box form-control" type="text" name="content" onKeyUp={this.handleChange} value={this.state.content} contentEditable="true">
+            
+                        </div>
                         <br/>
                         <button className="confirmReg">Submit!</button>
                     </div>

@@ -3,7 +3,7 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import axios from 'axios';
-import jwtDecode from 'jwt-decode';
+// import jwtDecode from 'jwt-decode';
 import Nav from './NavBar/navbar';
 import RegForm from './RegForm/regForm';
 import LoginForm from './LoginForm/loginForm';
@@ -40,7 +40,7 @@ class App extends Component {
         const jwt = localStorage.getItem('token')
         if(this.state.logged_in) {
             try {
-                const user = jwtDecode(jwt)
+                // const user = jwtDecode(jwt)
                 //console.log(`User: ${user.username}\nLogged_In: ${this.state.logged_in}`)
                 //console.log(user)
                 this.profileImage()
