@@ -44,6 +44,9 @@ class BlogForm extends Component {
 
     upperCase = () => {
         console.log("uppercase")
+        let text = window.getSelection().toString().toUpperCase()
+        console.log('text', text)
+        
         document.execCommand("uppercase");
     }
 
