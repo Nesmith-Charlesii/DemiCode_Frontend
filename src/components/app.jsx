@@ -182,7 +182,8 @@ class App extends Component {
             <div className="container-fluid p-0">
                 <Nav logged_in={this.state.logged_in} Logout={this.handle_logout} username={this.state.user.username} />
                 <Switch>
-                    <Route path="/home" render={props => <Home {...props} articles={this.state.articles} snippets={this.state.snippets} videos={this.state.videos} products={this.state.products} baseURL={this.state.baseURL}/>}/>
+                    {/* use 'exact' path to set default*/}
+                    <Route exact path="/" render={props => <Home {...props} articles={this.state.articles} snippets={this.state.snippets} videos={this.state.videos} products={this.state.products} baseURL={this.state.baseURL}/>}/>
 
                     <Route path="/profile" render={props => {
                     if(this.state.logged_in === true) {

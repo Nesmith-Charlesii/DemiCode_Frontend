@@ -6,7 +6,7 @@ import './navbar.css';
 const Nav = (props) => {
     const logged_out_nav = (
         <div className="nav-container">
-            <Link to="/home">
+            <Link to="/">
                 <div className="logo">
                     
                 </div>
@@ -50,7 +50,7 @@ const Nav = (props) => {
 
     const logged_in_nav = (
         <div className="nav-container">
-            <Link to="/home">
+            <Link to="/">
                 <div className="logo">
                     
                 </div>
