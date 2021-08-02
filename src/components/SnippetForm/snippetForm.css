@@ -39,3 +39,8 @@
     margin-bottom: 10px;
 }
 
+.snippetForm-container form textarea {
+    height: 22vh;
+}
+
+

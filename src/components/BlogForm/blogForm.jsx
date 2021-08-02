@@ -55,11 +55,10 @@ class BlogForm extends Component {
     }
 
     handleChange = e => {
-        console.log(e.target.innerText)
+        // console.log(e.target.innerText)
         this.setState({
-            [e.target.name]: e.target.value,
-            text: e.target.innerText
-        }, () => console.log('Text', this.state.text))
+            [e.target.name]: e.target.value
+        }, () => console.log("title", this.state.title, ": content", this.state.content))
     }
 
     handleImageChange = e => {
@@ -70,11 +69,13 @@ class BlogForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+        let hiddenInput = document.getElementById('hidden-input') 
+        hiddenInput = document.getElementById('content-box').value
+        console.log(hiddenInput)
         let formData = new FormData()
-        formData.append('header_image', this.state.header_image, this.state.header_image.name)
         formData.append('title', this.state.title)
         formData.append('content', this.state.content)
-        console.log('UPLOAD STATE NAME', this.state.upload.name)
+        // formData.append('header_image', this.state.header_image) because there is no header image input
         this.blogSubmittal(formData)
     }
 
@@ -122,9 +123,12 @@ class BlogForm extends Component {
                             </button>
                         </div>
                         <label htmlFor="content">Content:</label>
-                        <div id="content-box" className="content-box form-control" type="text" name="content" onKeyUp={this.handleChange} value={this.state.content} contentEditable="true">
+                        <div id="content-box" className="content-box form-control" type="text" name="content" onChange={this.handleChange} value={this.state.content} contentEditable="true">
             
                         </div>
+                        <input id="hidden-input" type="hidden">
+
+                        </input>
                         <br/>
                         <button className="confirmReg">Submit!</button>
                     </div>

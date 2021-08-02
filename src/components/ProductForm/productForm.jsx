@@ -37,7 +37,7 @@ class ProductForm extends Component {
     }
 
     productSubmittal = async(fd) => {
-        console.log('PRODUCT FORM DATA AT API', fd)
+        console.log('before api call', fd)
         try {
             let token = localStorage.getItem('token');
             let config = {headers: { Authorization: `JWT ${token}`}, 'content-type': 'multipart/form-data'};
