@@ -44,10 +44,7 @@ class BlogForm extends Component {
 
     upperCase = () => {
         console.log("uppercase")
-        let text = window.getSelection().toString().toUpperCase()
-        console.log('text', text)
-        
-        document.execCommand("uppercase");
+        document.execCommand("");
     }
 
     lowerCase = () => {
@@ -129,15 +126,6 @@ class BlogForm extends Component {
                             <button data-command="underline" type="button" data-toggle="tooltip" data-placement="top" onClick={this.underline}>
                                 <i className="fas fa-underline"></i>
                             </button>
-                            <button data-command="uppercase" className="btn btn-secondary btn-sm"  type="button" data-toggle="tooltip" data-placement="top" title="Uppercase Text" onClick={this.upperCase}>
-                                Upper Case
-                            </button>
-                            <button className="btn btn-secondary btn-sm" data-command="lowercase" type="button" data-toggle="tooltip" data-placement="top" title="Lowercase text" onClick={this.lowerCase}>
-                                Lower Case
-                            </button>
-                            <button className="btn btn-secondary btn-sm" data-command="uppercase" type="button" data-toggle="tooltip" data-placement="top" title="Capitalize text">
-                                Capitalize
-                            </button>
                             <button className="btn btn-secondary btn-sm" data-command="delete" type="button" data-toggle="tooltip" data-placement="top" title="Clear text" onClick={this.clearText}>
                                 Clear Text
                             </button>
@@ -154,7 +142,7 @@ class BlogForm extends Component {
                     <div className="header-image">
 
                     </div>
-                    <textarea className="display-text" defaultValue={this.state.text}>
+                    <textarea className="display-text" defaultValue={this.state.text} contentEditable="true">
                         
                     </textarea>
                 </div>

@@ -7,6 +7,7 @@ const Home = (props) => {
             <h2>Recently uploaded content</h2>
             <div className="content-wrapper-home">
                 <h3>Articles</h3>
+                <hr/>
                 <div className="article-content-home my-4">
                     {props.articles.map((article) => {
                     return (
@@ -21,6 +22,7 @@ const Home = (props) => {
             </div>
             <div className="content-wrapper-home">
                 <h3>Videos</h3>
+                <hr/>
                 <div className="video-content-home my-4">
                     {props.videos.map((video) => {
                         return (
@@ -35,6 +37,7 @@ const Home = (props) => {
             </div>
             <div className="content-wrapper-home">
                 <h3>Snippets</h3>
+                <hr/>
                 <div className="snippet-content-home my-4">
                     {props.snippets.map((snippet) => {
                     return (
@@ -49,6 +52,7 @@ const Home = (props) => {
             </div>
             <div className="content-wrapper-home">
                 <h3>Products</h3>
+                <hr/>
                 <div className="product-content-home my-4">
                     {props.products.map((product) => {
                     return (

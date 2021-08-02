@@ -1,3 +1,4 @@
+
 .productForm-container {
     height: 100vh;
     display: flex;
@@ -6,12 +7,14 @@
 }
 
 .productForm-container form {
-    width: 500px;
+    width: 32vw;
+    height: 85vh;
     border-radius: 10px;
     background: url('/src/assets/moonREd.png');
     background-size: cover;
     padding: 40px;
     box-shadow: 6px 6px 6px rgb(20, 20, 20);
+    overflow:hidden;
 }
 
 .productForm-container form label {
@@ -21,6 +24,7 @@
     letter-spacing: 2px;
     color: white;
     font-weight: bold;
+    font-size: 1em;
 }
 
 .productForm-container h2 {
@@ -31,5 +35,9 @@
 
 .productForm-container form input {
     margin-bottom: 10px;
+}
+
+.productForm-container form textarea {
+    height: 22vh;
 }
 

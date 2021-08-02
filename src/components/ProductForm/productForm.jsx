@@ -26,14 +26,13 @@ class ProductForm extends Component {
     }
 
     handleSubmit = e => {
+        // Form data 1st param must match the name of model field in django
         e.preventDefault();
         let fd = new FormData()
-        // Form data 1st param must match the name of model field in django
         fd.append('name', this.state.name)
         fd.append('description', this.state.description)
         fd.append('image', this.state.product_image, this.state.product_image.name)
         fd.append('price', this.state.price)
-        console.log('Product Image State Name', this.state.product_image.name)
         this.productSubmittal(fd)
     }
 
