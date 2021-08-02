@@ -42,15 +42,6 @@ class BlogForm extends Component {
         document.execCommand('underline');
     }
 
-    upperCase = () => {
-        console.log("uppercase")
-        document.execCommand("");
-    }
-
-    lowerCase = () => {
-        document.execCommand('lowercase');
-    }
-
     bullet = () => {
         document.execCommand('insertUnorderedList');
     }
