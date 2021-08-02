@@ -28,10 +28,11 @@ class SnippetForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
         let formData = new FormData()
-        formData.append('upload', this.state.upload, this.state.upload.name)
+        if(this.state.upload) {
+            formData.append('upload', this.state.upload, this.state.upload.name)
+        }
         formData.append('title', this.state.title)
         formData.append('text', this.state.text)
-        console.log('UPLOAD STATE NAME', this.state.upload.name)
         this.snippetSubmittal(formData)
     }
 
