@@ -55,7 +55,9 @@ class BlogForm extends Component {
     }
 
     handleChange = e => {
-        // console.log(e.target.innerText)
+        console.log(e.target.innerText)
+        let content = document.getElementById('content-box').innerText
+        console.log('inner text content', content)
         this.setState({
             [e.target.name]: e.target.value
         }, () => console.log("title", this.state.title, ": content", this.state.content))
@@ -69,12 +71,9 @@ class BlogForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        let hiddenInput = document.getElementById('hidden-input') 
-        hiddenInput = document.getElementById('content-box').value
-        console.log(hiddenInput)
         let formData = new FormData()
         formData.append('title', this.state.title)
-        formData.append('content', this.state.content)
+        formData.append('content', this.state.text) 
         // formData.append('header_image', this.state.header_image) because there is no header image input
         this.blogSubmittal(formData)
     }
@@ -123,10 +122,10 @@ class BlogForm extends Component {
                             </button>
                         </div>
                         <label htmlFor="content">Content:</label>
-                        <div id="content-box" className="content-box form-control" type="text" name="content" onChange={this.handleChange} value={this.state.content} contentEditable="true">
+                        <div id="content-box" className="content-box form-control" type="text" name="content" onKeyUp={this.handleChange} value={this.state.content} contentEditable="true">
             
                         </div>
-                        <textarea id="hidden-input" style={{display: "none"}}>
+                        <textarea id="hidden-input" style={{display: "none"}} defaultValue={this.state.text}>
 
                         </textarea>
                         <br/>
