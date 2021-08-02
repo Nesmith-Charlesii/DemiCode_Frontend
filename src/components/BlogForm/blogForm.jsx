@@ -129,14 +129,14 @@ class BlogForm extends Component {
                         <button className="confirmReg">Submit!</button>
                     </div>
                 </form>
-                <div className="article-display">
+                {/* <div className="article-display">
                     <div className="header-image">
 
                     </div>
                     <textarea className="display-text" defaultValue={this.state.text} contentEditable="true">
                         
                     </textarea>
-                </div>
+                </div> */}
             </div>
         )
     }

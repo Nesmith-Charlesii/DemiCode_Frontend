@@ -6,7 +6,8 @@
 }
 
 .snippetForm-container form {
-    width: 500px;
+    width: 32vw;
+    height: 85vh;
     border-radius: 10px;
     background: url('/src/assets/keys.jpg');
     background-size: cover;
