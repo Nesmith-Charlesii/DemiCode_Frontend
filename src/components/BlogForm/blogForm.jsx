@@ -55,12 +55,12 @@ class BlogForm extends Component {
     }
 
     handleChange = e => {
-        console.log(e.target.innerText)
         let content = document.getElementById('content-box').innerText
         console.log('inner text content', content)
         this.setState({
-            [e.target.name]: e.target.value
-        }, () => console.log("title", this.state.title, ": content", this.state.content))
+            [e.target.name]: e.target.value,
+            text: content
+        }, () => console.log("title", this.state.title, ": content", this.state.text))
     }
 
     handleImageChange = e => {
