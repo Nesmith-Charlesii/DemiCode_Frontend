@@ -126,9 +126,9 @@ class BlogForm extends Component {
                         <div id="content-box" className="content-box form-control" type="text" name="content" onChange={this.handleChange} value={this.state.content} contentEditable="true">
             
                         </div>
-                        <input id="hidden-input" type="hidden">
+                        <textarea id="hidden-input" style={{display: "none"}}>
 
-                        </input>
+                        </textarea>
                         <br/>
                         <button className="confirmReg">Submit!</button>
                     </div>
