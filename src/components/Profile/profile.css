@@ -8,6 +8,7 @@
 }
 
 .profile-header {
+    padding-top: 50px;
     height: 40vh;
     width: 100vw;
     padding-left: 80px;
@@ -36,7 +37,6 @@
     width: 100vw;
 }
 
-
 .profile-image {
     width: 14vw;
     height: 14vw;
@@ -55,6 +55,7 @@ img {
 
 .profile-uploader{
     display: flex;
+    justify-content: center;
 }
 
 .profile-name {

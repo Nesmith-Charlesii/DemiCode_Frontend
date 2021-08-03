@@ -30,6 +30,10 @@ const Profile = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [CSS()]); 
 
+    const Upload = () => {
+        document.getElementById("image-upload").click()
+    }
+
     const Default = (props) => {
         return (
             <div className="content-load">
@@ -193,8 +197,8 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <div className="profile-uploader">
-                    <label htmlFor="profile-pic"><i class="fas fa-camera fa-3x" id="profile-uploader"></i></label>
-                    <input type="file" accept="image/*" style={{display:"none"}} name="profilePic"/>
+                    <label htmlFor="profile-pic"><i className="fas fa-camera fa-3x" id="profile-uploader" onClick={() => Upload()}></i></label>
+                    <input type="file" accept="image/*" style={{display:"none"}} name="profilePic"  id="image-upload"/>
                 </div>
             </div>
             <div className="profile-nav">
