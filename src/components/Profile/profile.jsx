@@ -28,7 +28,7 @@ const Profile = (props) => {
         console.log('Snippets useEffect', snippets)
         console.log('Videos useEffect', videos)
         console.log('Products useEffect', products)
-        console.log('image source', imageSource)
+        console.log('image source', imageSource.name)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [CSS(), imageSource]); 
 
@@ -132,7 +132,7 @@ const Profile = (props) => {
         console.log("change value name", e.target.files[0].name)
         setImageSource(e.target.files[0])
         let imageData = new FormData()
-        imageData.append('photo_upload', imageSource, imageSource.name)
+        imageData.append('photo_upload', imageSource)
     }
 
     // const handleSubmit = (e) => {
@@ -227,7 +227,7 @@ const Profile = (props) => {
                 <div className="profile-uploader">
                     <form>
                         <label htmlFor="profile-pic"><i className="fas fa-camera fa-3x" id="profile-uploader" onClick={() => Upload()}></i></label>
-                        <input type="file" accept="image/*" style={{display:"none"}} name="photo_upload"  id="image-upload" onChange={handleChange} value={imageSource} />
+                        <input type="file" accept="image/*" style={{display:"none"}} name="photo_upload" id="image-upload" onChange={handleChange} /*value={imageSource} NO VALUE NEEDED FOR FILE UPLOADS*/ />
                     </form>
                 </div>
             </div>
