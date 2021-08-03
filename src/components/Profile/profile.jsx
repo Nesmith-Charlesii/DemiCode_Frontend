@@ -133,6 +133,7 @@ const Profile = (props) => {
         setImageSource(e.target.files[0])
         let imageData = new FormData()
         imageData.append('photo_upload', imageSource)
+        Uploader(imageData)
     }
 
     // const handleSubmit = (e) => {
