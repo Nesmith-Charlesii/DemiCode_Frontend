@@ -10,6 +10,7 @@ const Profile = (props) => {
     const [snippets, setSnippets] = useState([])
     const [videos, setVideos] = useState([])
     const [products, setProducts] = useState([])
+    const [imageSource, setSource] = useState("")
     
     let CSS = () => {
         return (
@@ -126,6 +127,11 @@ const Profile = (props) => {
         )
     }
 
+    const handleChange = (e) => {
+        console.log("change value", e)
+        
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault() 
         let imageData = new FormData()
@@ -216,9 +222,9 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <div className="profile-uploader">
-                    <form>
+                    <form onSubmit={() => handleSubmit()}>
                         <label htmlFor="profile-pic"><i className="fas fa-camera fa-3x" id="profile-uploader" onClick={() => Upload()}></i></label>
-                        <input type="file" accept="image/*" style={{display:"none"}} name="profilePic"  id="image-upload"/>
+                        <input type="file" accept="image/*" style={{display:"none"}} name="profilePic"  id="image-upload" onChange={handleChange} value={imageSource} />
                     </form>
                 </div>
             </div>
