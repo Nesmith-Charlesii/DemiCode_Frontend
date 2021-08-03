@@ -126,11 +126,19 @@ const Profile = (props) => {
         )
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault() 
+        let imageData = new FormData()
+        imageData.append('image', this.state.product_image, this.state.product_image.name)
+        Uploader(imageData)
+    }
+
     const Uploader = async(imageData) => {
         try{
             let token = localStorage.getItem('token');
             let config = {headers: {Authorization: `JWT ${token}`}, 'content-type': 'multipart/form-data'};
             let {data} = await axios.post(`http://127.0.0.1:8000/api/image_creator`, imageData, config)
+            console.log('image data', data)
         }
         catch(error) {
             alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
