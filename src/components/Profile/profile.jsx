@@ -10,7 +10,7 @@ const Profile = (props) => {
     const [snippets, setSnippets] = useState([])
     const [videos, setVideos] = useState([])
     const [products, setProducts] = useState([])
-    const [imageSource, setSource] = useState("")
+    const [imageSource, setImageSource] = useState("")
     
     let CSS = () => {
         return (
@@ -28,8 +28,9 @@ const Profile = (props) => {
         console.log('Snippets useEffect', snippets)
         console.log('Videos useEffect', videos)
         console.log('Products useEffect', products)
+        console.log('image source', imageSource)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [CSS()]); 
+    }, [CSS(), imageSource]); 
 
     const Upload = () => {
         document.getElementById("image-upload").click()
@@ -128,16 +129,18 @@ const Profile = (props) => {
     }
 
     const handleChange = (e) => {
-        console.log("change value", e)
-        
+        console.log("change value name", e.target.files[0].name)
+        setImageSource(e.target.files[0])
+        let imageData = new FormData()
+        imageData.append('photo_upload', imageSource, imageSource.name)
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault() 
-        let imageData = new FormData()
-        imageData.append('image', this.state.product_image, this.state.product_image.name)
-        Uploader(imageData)
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault() 
+    //     let imageData = new FormData()
+    //     imageData.append('image', this.state.product_image, this.state.product_image.name)
+    //     Uploader(imageData)
+    // }
 
     const Uploader = async(imageData) => {
         try{
@@ -222,9 +225,9 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <div className="profile-uploader">
-                    <form onSubmit={() => handleSubmit()}>
+                    <form>
                         <label htmlFor="profile-pic"><i className="fas fa-camera fa-3x" id="profile-uploader" onClick={() => Upload()}></i></label>
-                        <input type="file" accept="image/*" style={{display:"none"}} name="profilePic"  id="image-upload" onChange={handleChange} value={imageSource} />
+                        <input type="file" accept="image/*" style={{display:"none"}} name="photo_upload"  id="image-upload" onChange={handleChange} value={imageSource} />
                     </form>
                 </div>
             </div>
