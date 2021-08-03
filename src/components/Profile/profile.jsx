@@ -126,6 +126,17 @@ const Profile = (props) => {
         )
     }
 
+    const Uploader = async(imageData) => {
+        try{
+            let token = localStorage.getItem('token');
+            let config = {headers: {Authorization: `JWT ${token}`}, 'content-type': 'multipart/form-data'};
+            let {data} = await axios.post(`http://127.0.0.1:8000/api/image_creator`, imageData, config)
+        }
+        catch(error) {
+            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+        }
+    }
+
     const myArticles = async() => {
         console.log('inside of my articles')
         try {
@@ -197,8 +208,10 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <div className="profile-uploader">
-                    <label htmlFor="profile-pic"><i className="fas fa-camera fa-3x" id="profile-uploader" onClick={() => Upload()}></i></label>
-                    <input type="file" accept="image/*" style={{display:"none"}} name="profilePic"  id="image-upload"/>
+                    <form>
+                        <label htmlFor="profile-pic"><i className="fas fa-camera fa-3x" id="profile-uploader" onClick={() => Upload()}></i></label>
+                        <input type="file" accept="image/*" style={{display:"none"}} name="profilePic"  id="image-upload"/>
+                    </form>
                 </div>
             </div>
             <div className="profile-nav">
