@@ -193,7 +193,8 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <div className="profile-uploader">
-                    <input type="file" accept="image/*" name="profilePic"/>
+                    <label htmlFor="profile-pic"><i class="fas fa-camera fa-3x" id="profile-uploader"></i></label>
+                    <input type="file" accept="image/*" style={{display:"none"}} name="profilePic"/>
                 </div>
             </div>
             <div className="profile-nav">

@@ -54,7 +54,7 @@ img {
 }
 
 .profile-uploader{
-    width: 50px;
+    display: flex;
 }
 
 .profile-name {
