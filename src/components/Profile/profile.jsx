@@ -131,23 +131,20 @@ const Profile = (props) => {
     const handleChange = (e) => {
         console.log("change value name", e.target.files[0].name)
         setImageSource(e.target.files[0])
-        let imageData = new FormData()
-        imageData.append('photo_upload', imageSource)
-        Uploader(imageData)
+        // Uploader(imageData)
     }
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault() 
-    //     let imageData = new FormData()
-    //     imageData.append('image', this.state.product_image, this.state.product_image.name)
-    //     Uploader(imageData)
-    // }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        let imageData = new FormData()
+        imageData.append('photo_upload', imageSource)
+    }
 
     const Uploader = async(imageData) => {
         try{
             let token = localStorage.getItem('token');
             let config = {headers: {Authorization: `JWT ${token}`}, 'content-type': 'multipart/form-data'};
-            let {data} = await axios.post(`http://127.0.0.1:8000/api/image_creator`, imageData, config)
+            let {data} = await axios.post(`http://127.0.0.1:8000/api/image_creator/`, imageData, config)
             console.log('image data', data)
         }
         catch(error) {
@@ -226,7 +223,7 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <div className="profile-uploader">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <label htmlFor="profile-pic"><i className="fas fa-camera fa-3x" id="profile-uploader" onClick={() => Upload()}></i></label>
                         <input type="file" accept="image/*" style={{display:"none"}} name="photo_upload" id="image-upload" onChange={handleChange} /*value={imageSource} NO VALUE NEEDED FOR FILE UPLOADS*/ />
                     </form>
