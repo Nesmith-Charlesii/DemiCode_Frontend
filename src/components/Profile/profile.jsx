@@ -181,18 +181,20 @@ const Profile = (props) => {
     
     return (
         <div className="profile-wrapper">
-            <div className="profile-display-wrapper">
-                <div className="profile-image" style={{backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
-                    
+            <div className="profile-header">
+                <div className="profile-display-wrapper">
+                    <div className="profile-image" style={{backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+                        
+                    </div>
+                    <div className="profile-name">
+                        <p>{props.user.first_name} {props.user.last_name}</p>
+                        <p id="aka">A.K.A</p>
+                        <p>{props.user.username}</p>
+                    </div>
                 </div>
-                <div className="profile-name">
-                    <p>{props.user.first_name} {props.user.last_name}</p>
-                    <p id="aka">A.K.A</p>
-                    <p>{props.user.username}</p>
+                <div className="profile-uploader">
+                    <input type="file" accept="image/*" name="profilePic"/>
                 </div>
-            </div>
-            <div className="profile-uploader">
-                <input type="file" accept="image/*" name="profilePic"/>
             </div>
             <div className="profile-nav">
                 <ul>
