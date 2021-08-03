@@ -29,9 +29,11 @@
     width: 14vw;
     height: 14vw;
     border-radius: 50%;
+    border: 5px solid rgb(3, 175, 3);
     overflow: hidden;
     display: flex;
     justify-content: center;
+    box-shadow: 2px 2px 2px rgb(20, 20, 20);
 }
 
 img {

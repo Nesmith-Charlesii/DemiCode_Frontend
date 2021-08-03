@@ -191,6 +191,9 @@ const Profile = (props) => {
                     <p>{props.user.username}</p>
                 </div>
             </div>
+            <div className="profile-uploader">
+                <input type="file" accept="image/*" name="profilePic"/>
+            </div>
             <div className="profile-nav">
                 <ul>
                     <div className="link">
