@@ -33,6 +33,9 @@ class SnippetForm extends Component {
         }
         formData.append('title', this.state.title)
         formData.append('text', this.state.text)
+        for(var pair of formData.entries()) {
+            console.log('snippet', pair)
+        }
         this.snippetSubmittal(formData)
     }
 

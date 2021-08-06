@@ -10,7 +10,7 @@ const Profile = (props) => {
     const [snippets, setSnippets] = useState([])
     const [videos, setVideos] = useState([])
     const [products, setProducts] = useState([])
-    const [imageSource, setImageSource] = useState("")
+    const [imageSource, setImageSource] = useState({})
     
     let CSS = () => {
         return (
@@ -24,11 +24,11 @@ const Profile = (props) => {
         mySnippets()
         myVideos()
         myProducts()
-        console.log('Articles useEffect', articles)
-        console.log('Snippets useEffect', snippets)
-        console.log('Videos useEffect', videos)
-        console.log('Products useEffect', products)
-        console.log('image source', imageSource.name)
+        // console.log('Articles useEffect', articles)
+        // console.log('Snippets useEffect', snippets)
+        // console.log('Videos useEffect', videos)
+        // console.log('Products useEffect', products)
+        console.log('Image useEffect', imageSource.name)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [CSS(), imageSource]); 
 
@@ -131,24 +131,29 @@ const Profile = (props) => {
     const handleChange = (e) => {
         console.log("change value name", e.target.files[0].name)
         setImageSource(e.target.files[0])
-        // Uploader(imageData)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
+        console.log('handleSubmit event', e)
         e.preventDefault()
         let imageData = new FormData()
-        imageData.append('photo_upload', imageSource)
+        imageData.append('photo_upload', imageSource, imageSource.name)
+        for(var pair of imageData.entries()) {
+            console.log('form data entries', pair)
+        }
+        Uploader(imageData)
     }
 
     const Uploader = async(imageData) => {
+        console.log('UPLOADER API', imageData)
         try{
             let token = localStorage.getItem('token');
-            let config = {headers: {Authorization: `JWT ${token}`}, 'content-type': 'multipart/form-data'};
+            let config = {headers: {Authorization: `JWT ${token}`} ,'content-type': 'multipart/form-data'}
             let {data} = await axios.post(`http://127.0.0.1:8000/api/image_creator/`, imageData, config)
             console.log('image data', data)
         }
         catch(error) {
-            alert(`Whoops! Looks like we're having some technical difficulties. Try again later`)
+            alert(`Whoops! ${error} Looks like we're having some technical difficulties. Try again later`)
         }
     }
 
@@ -223,9 +228,10 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <div className="profile-uploader">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} id="uploadForm">
                         <label htmlFor="profile-pic"><i className="fas fa-camera fa-3x" id="profile-uploader" onClick={() => Upload()}></i></label>
                         <input type="file" accept="image/*" style={{display:"none"}} name="photo_upload" id="image-upload" onChange={handleChange} /*value={imageSource} NO VALUE NEEDED FOR FILE UPLOADS*/ />
+                        <button className="btn btn-success btn-sm" >confirm</button>
                     </form>
                 </div>
             </div>
