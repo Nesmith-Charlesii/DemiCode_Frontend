@@ -61,7 +61,12 @@ img {
 
 .profile-uploader{
     display: flex;
-    justify-content: center;
+    align-items: flex-end;
+}
+
+.fa-camera {
+    color: rgba(255, 255, 255, .25);
+    
 }
 
 .profile-name {
