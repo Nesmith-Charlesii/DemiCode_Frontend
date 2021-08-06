@@ -219,20 +219,19 @@ const Profile = (props) => {
             <div className="profile-header">
                 <div className="profile-display-wrapper">
                     <div className="profile-image" style={{backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
-                        
+                    <div className="profile-uploader">
+                    <form onSubmit={handleSubmit} id="uploadForm">
+                        <label htmlFor="profile-pic"><i className="fas fa-camera fa-3x" id="profile-uploader" onClick={() => Upload()}></i></label>
+                        <input type="file" accept="image/*" style={{display:"none"}} name="photo_upload" id="image-upload" onChange={handleChange} /*value={imageSource} NO VALUE NEEDED FOR FILE UPLOADS*/ />
+                        <button className="btn btn-success btn-sm" >confirm</button>
+                    </form>
+                </div>
                     </div>
                     <div className="profile-name">
                         <p>{props.user.first_name} {props.user.last_name}</p>
                         <p id="aka">A.K.A</p>
                         <p>{props.user.username}</p>
                     </div>
-                </div>
-                <div className="profile-uploader">
-                    <form onSubmit={handleSubmit} id="uploadForm">
-                        <label htmlFor="profile-pic"><i className="fas fa-camera fa-3x" id="profile-uploader" onClick={() => Upload()}></i></label>
-                        <input type="file" accept="image/*" style={{display:"none"}} name="photo_upload" id="image-upload" onChange={handleChange} /*value={imageSource} NO VALUE NEEDED FOR FILE UPLOADS*/ />
-                        <button className="btn btn-success btn-sm" >confirm</button>
-                    </form>
                 </div>
             </div>
             <div className="profile-nav">
