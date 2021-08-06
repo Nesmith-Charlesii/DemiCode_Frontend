@@ -131,6 +131,8 @@ const Profile = (props) => {
     const handleChange = (e) => {
         console.log("change value name", e.target.files[0].name)
         setImageSource(e.target.files[0])
+        document.getElementById('profile-uploader').style.color = "green"
+        document.getElementById('confirm-upload').style.display = "flex"
     }
 
     const handleSubmit = e => {
@@ -224,7 +226,7 @@ const Profile = (props) => {
                             <form onSubmit={handleSubmit} id="uploadForm">
                                 <label htmlFor="profile-pic"><i className="fas fa-camera fa-3x" id="profile-uploader" onClick={() => Upload()}></i></label>
                                 <input type="file" accept="image/*" style={{display:"none"}} name="photo_upload" id="image-upload" onChange={handleChange} /*value={imageSource} NO VALUE NEEDED FOR FILE UPLOADS*/ />
-                                <button className="btn btn-success btn-sm" >confirm</button>
+                                <button className="btn btn-success btn-sm" id="confirm-upload">confirm</button>
                             </form>
                         </div>
                     </div>

@@ -212,10 +212,10 @@ class App extends Component {
                     }}
                     />
 
-                    <Route path="/articles" render={props => <BlogForm {...props} blogSubmittal={(blog) => {this.blogSubmittal(blog)}} />}/>
-                    <Route path="/products" render={props => <ProductForm {...props}/>}/>
-                    <Route path="/snippets" render={props => <SnippetForm {...props} />}/>
-                    <Route path="/videos" render={props => <VideoForm {...props} />}/>
+                    <Route path="/article-form" render={props => <BlogForm {...props} blogSubmittal={(blog) => {this.blogSubmittal(blog)}} />}/>
+                    <Route path="/product-form" render={props => <ProductForm {...props}/>}/>
+                    <Route path="/snippet-form" render={props => <SnippetForm {...props} />}/>
+                    <Route path="/video-form" render={props => <VideoForm {...props} />}/>
                     <Route path="/checkout" render={props => <Checkout {...props} />}/>
                 </Switch>
             </div>

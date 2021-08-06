@@ -65,8 +65,12 @@ img {
 }
 
 .fa-camera {
-    color: rgba(255, 255, 255, .25);
+    color: rgba(255, 255, 255, 0.5);
     
+}
+
+#confirm-upload {
+    display: none;
 }
 
 .profile-name {
