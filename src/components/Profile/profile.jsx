@@ -240,19 +240,19 @@ const Profile = (props) => {
             <div className="profile-nav">
                 <ul>
                     <div className="link">
-                        <Link to="/profile" onClick={() => {setContent(Articles); CSS()}}>Articles</Link>
+                        <Link to="/profile/articles" onClick={() => {setContent(Articles); CSS()}}>Articles</Link>
                         <span></span>
                     </div>
                     <div className="link">
-                        <Link to="/profile" onClick={() => {setContent(Snippets); CSS()}}>Snippets</Link>
+                        <Link to="/profile/snippets" onClick={() => {setContent(Snippets); CSS()}}>Snippets</Link>
                         <span></span>
                     </div>
                     <div className="link">
-                        <Link to="/profile" onClick={() => {setContent(Videos); CSS()}}>Videos</Link>
+                        <Link to="/profile/videos" onClick={() => {setContent(Videos); CSS()}}>Videos</Link>
                         <span></span>
                     </div>
                     <div className="link">
-                        <Link to="/profile" onClick={() => {setContent(Products); CSS()}}>Products</Link>
+                        <Link to="/profile/products" onClick={() => {setContent(Products); CSS()}}>Products</Link>
                         <span></span>
                     </div>
                 </ul> 
