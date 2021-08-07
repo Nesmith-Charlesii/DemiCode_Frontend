@@ -47,7 +47,7 @@ const Profile = (props) => {
     const Articles = (props) => {
         return (
             <div className="content-wrapper">
-                <Link to="/articles">
+                <Link to="/article-form">
                     <i className="fas fa-arrow-circle-up fa-5x" id="upload-arrow"><p id="icon-text" className="my-3">Create an article</p></i>
                 </Link>
                 <div className="article-content">
@@ -68,7 +68,7 @@ const Profile = (props) => {
     const Snippets = (props) => {
         return (
             <div className="content-wrapper">
-                <Link to="/snippets">
+                <Link to="/snippet-form">
                     <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Create a snippet</p></i>
                 </Link>
                 <div className="snippet-content">
@@ -89,7 +89,7 @@ const Profile = (props) => {
     const Videos = (props) => {
         return (
             <div className="content-wrapper">
-                <Link to="/videos">
+                <Link to="/video-form">
                     <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Upload a video</p></i>
                 </Link>
                 <div className="video-content">
@@ -110,7 +110,7 @@ const Profile = (props) => {
     const Products = (props) => {
         return (
             <div className="content-wrapper">
-                <Link to="/products">
+                <Link to="/product-form">
                     <i className="fas fa-arrow-circle-up fa-5x"><p id="icon-text" className="my-3">Create a product</p></i>
                 </Link>
                 <div className="product-content">

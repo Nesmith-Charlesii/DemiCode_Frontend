@@ -217,6 +217,12 @@ class App extends Component {
                     <Route path="/snippet-form" render={props => <SnippetForm {...props} />}/>
                     <Route path="/video-form" render={props => <VideoForm {...props} />}/>
                     <Route path="/checkout" render={props => <Checkout {...props} />}/>
+
+                    <Route path="/articles" render={props => <BlogForm {...props} blogSubmittal={(blog) => {this.blogSubmittal(blog)}} />}/>
+                    <Route path="/products" render={props => <ProductForm {...props}/>}/>
+                    <Route path="/snippets" render={props => <SnippetForm {...props} />}/>
+                    <Route path="/videos" render={props => <VideoForm {...props} />}/>
+                    
                 </Switch>
             </div>
         )
