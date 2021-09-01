@@ -2,5 +2,16 @@
     height: 100vh;
     padding-top: 100px;
     display: flex;
+    align-items: center;
     justify-content: center;
+    text-align: center;
+}
+
+.product-info {
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px solid rgb(48, 0, 124);
+    padding: 35px;
 }
