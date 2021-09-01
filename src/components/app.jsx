@@ -18,6 +18,7 @@ import ArticleGallery from './ArticleGallery/articleGallery';
 import SnippetGallery from './SnippetGallery/snippetGallery';
 import VideoGallery from './VideoGallery/videoGallery';
 import ProductGallery from './ProductGallery/productGallery';
+import ProductDisplay from './ProductDisplay/productDisplay';
 
 
 class App extends Component {
@@ -226,7 +227,7 @@ class App extends Component {
                     <Route path="/products" render={props => <ProductGallery {...props} products={this.state.products} />} />
                     <Route path="/snippets" render={props => <SnippetGallery {...props} snippets={this.state.snippets} />}/>
                     <Route path="/videos" render={props => <VideoGallery {...props} videos={this.state.videos} baseURL={this.state.baseURL} />}/>
-                    
+                    <Route path="/product-display" render={props => <ProductDisplay {...props}/>}/>
                 </Switch>
             </div>
         )

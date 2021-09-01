@@ -258,7 +258,7 @@ const Profile = (props) => {
                 </ul> 
             </div>
             <div className="profile-content-wrapper">
-                {content}
+                <Link to="/product-display">{content}</Link>
             </div>
         </div>
 

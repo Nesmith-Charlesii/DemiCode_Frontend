@@ -25,9 +25,6 @@ const Nav = (props) => {
                     <Link to='/products'>
                         <li>products</li>
                     </Link>
-                    <Link to='/contributors'>
-                        <li>contributors</li>
-                    </Link>
                 </ul>
             </nav>
             <div className="nav-common">
@@ -85,7 +82,7 @@ const Nav = (props) => {
                 </div>
                 <ul>
                     <Link to='/profile'>
-                        <li><p><i className="fas fa-user" id="logout-icon"></i></p></li>
+                        <li><p><i className="fas fa-user" id="active-icon"></i></p></li>
                     </Link>
                     <li><i className="fas fa-sign-out-alt" id="logout-icon" onClick={props.Logout} ></i></li>
                 </ul>
